@@ -1,0 +1,60 @@
+:root{
+    /*  PALETA DE COLORES  */
+    --blanco: #ffffff;
+    --negro: #212121;
+    --amarillo: #ffc107;
+    --azul: #0097a7;
+    --gris: #757575;
+    --azulOscuro: #095580;
+
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    font-size: 16px;
+    font-family: 'Playfair Display', serif;
+}
+.titulo {
+    text-align: center;
+    font-size: 3.5rem;
+    color: var(--negro);
+    font-weight: 400;
+ 
+}
+
+.subti{
+    font-size: 2.2rem;
+}
+.contenedor{
+    width: 120rem;
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;
+
+}
+.nav-bg{
+    background-color: var(--azul);
+   
+}
+.navegacion a{
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+}
+.navegacion {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navegacion a:hover{
+    background-color: var(--azulOscuro);
+    
+}
+
+@media (min-width: 480px){
+    
+}
