@@ -97,7 +97,7 @@ h1,h2,h3{
 
 .nav-bg{
     background-color: var(--azul);
-    padding-top: 80px;
+    padding-top: 65px;
     position: fixed;
     width: 100%;
     z-index: 2;
