@@ -208,16 +208,8 @@ footer div{
 footer p{
     text-align: center;
 }
-<<<<<<< HEAD
-.destacados{
-    width: 70%;
-    height: 400px;
-    background: var(--blanco);
-    margin-left: 320px;
-    display: block;
-    text-decoration: none;
-    box-shadow: 2px 2px 11px 0 rgb(0 0 0);
-}
+
+
 .carrusel{
     margin: auto;
     background-color:var(--blanco);
@@ -289,9 +281,16 @@ footer p{
     padding-inline-start: 0px;
 }
 
-=======
-
 .contacto {
-    margin-left: 40rem;
+    justify-content: center;
+    text-align: center;
 }
->>>>>>> 57466668bf7137e012d1a8a21ba46139a5e8879e
+.destacados{
+    width: 70%;
+    height: 400px;
+    background: var(--blanco);
+    margin-left: 320px;
+    display: block;
+    text-decoration: none;
+    box-shadow: 2px 2px 11px 0 rgb(0 0 0);
+}
