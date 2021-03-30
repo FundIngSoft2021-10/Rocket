@@ -18,6 +18,7 @@ html{
 body{
     font-size: 16px;
     font-family: 'Playfair Display', serif;
+    background-image: linear-gradient(to top, #DFE9F3 0%, var(--blanco) 100%);
 }
 
 h1{
@@ -75,6 +76,15 @@ h1,h2,h3{
     
 }
 
+.sombra {
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(128,126,128,1);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(128,126,128,1);
+    box-shadow: 0px 5px 15px 0px rgba(128,126,128,1);
+    background-color: var(--blanco);
+    padding: 2rem;
+    margin-left: 40rem;
+}
+
 .nav-bg{
     background-color: var(--azul);
    
@@ -111,6 +121,7 @@ h1,h2,h3{
     background-size: cover;
     height: 450px;
     position: relative;
+    margin-bottom: 2rem;
 }
 
 .contenido-rocket {
