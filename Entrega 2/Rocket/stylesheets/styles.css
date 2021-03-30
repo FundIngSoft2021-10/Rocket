@@ -58,3 +58,39 @@ body{
 @media (min-width: 480px){
     
 }
+
+.ofertas{
+    width: 70%;
+    height: 400px;
+    background: var(--blanco);
+    margin-left: 400px;
+    display: block;
+    text-decoration: none;
+    box-shadow: 2px 2px 11px 0 rgb(0 0 0);
+}
+.ofertas h2{
+    margin-left: 450px;
+}
+.ofertas li{
+    display: block;
+    text-decoration: none;
+    margin: 15px;
+}
+.ofertas li a {
+    float: left;
+    text-align: center;
+    text-decoration: none;
+    width: 31%;
+    height: 300px;
+    background-color: var(--azulOscuro);
+    margin: 5px 5px 10px 10px;
+}
+.ofertas li a:hover {
+    background-color: var(--azul);
+    
+}
+.ofertas li a img {
+    width: 300px;
+    margin: 5px;
+      
+}
