@@ -54,6 +54,27 @@ h1,h2,h3{
     margin-left: auto;
 
 }
+
+.boton{
+    background-color: var(--azul);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .boton{
+        width: auto;
+    }
+    
+}
+
 .nav-bg{
     background-color: var(--azul);
    
@@ -116,12 +137,12 @@ h1,h2,h3{
     
 }
 
-<<<<<<< HEAD
+
 .usuario{
     position: absolute;
     top: 60rem;
     left: 40rem;
-=======
+    }
 .ofertas{
     width: 70%;
     height: 400px;
@@ -155,6 +176,5 @@ h1,h2,h3{
 .ofertas li a img {
     width: 300px;
     margin: 5px;
-      
->>>>>>> 5f85b4134c3a88fe88cd65a33ee91cfc5f47f3b6
 }
+
