@@ -185,9 +185,12 @@ h1,h2,h3{
     color: #ffffff;  
 }
 .ofertas li a img {
-    width: 300px;
-    margin: 5px;
-
+    object-fit: contain;
+    width:100%;
 }
-
-
+footer div{
+    text-align: center;
+}
+footer p{
+    text-align: center;
+}
