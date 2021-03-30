@@ -208,6 +208,7 @@ footer div{
 footer p{
     text-align: center;
 }
+<<<<<<< HEAD
 .destacados{
     width: 70%;
     height: 400px;
@@ -288,3 +289,9 @@ footer p{
     padding-inline-start: 0px;
 }
 
+=======
+
+.contacto {
+    margin-left: 40rem;
+}
+>>>>>>> 57466668bf7137e012d1a8a21ba46139a5e8879e
