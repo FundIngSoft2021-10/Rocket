@@ -6,7 +6,7 @@
     --azul: #0097a7;
     --gris: #757575;
     --azulOscuro: #095580;
-
+    --verde: #45ac70;  
 }
 html{
     font-size: 62.5%;
@@ -77,12 +77,16 @@ h1,h2,h3{
     border-radius: .5rem;
     width: 90%;
     text-align: center;
+    border: none;
 }
 @media (min-width: 768px) {
     .boton{
         width: auto;
     }
     
+}
+.boton:hover{
+    cursor: pointer;
 }
 
 .sombra {
@@ -97,7 +101,7 @@ h1,h2,h3{
 
 .nav-bg{
     background-color: var(--azul);
-    padding-top: 60px;
+    padding-top: 80px;
     position: fixed;
     width: 100%;
     z-index: 2;
@@ -130,7 +134,7 @@ h1,h2,h3{
 }
 
 .rocket {
-    background-image: url(../img/hero.jpg);
+    background-image: url(../img/banner3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     height: 400px;
@@ -140,7 +144,7 @@ h1,h2,h3{
 
 .contenido-rocket {
     position: absolute;
-    background-color: rgba(0, 0,0, .6);
+    background-color: rgba(0, 0,0, .5);
     width: 100%;
     height: 100%;
 
@@ -278,7 +282,7 @@ footer p{
 /**********************LOGIN/REGISTRO***************************/
 /***************************************************************/
 
-.login-registro{
+.btn-login-registro{
     position: absolute;
     top: 4rem;
     right: 36.8rem; 
@@ -287,6 +291,16 @@ footer p{
 .boton-75{
     font-size: 1.5rem;
     width: 50%;
+}
+
+.boton-75:hover{
+    background-color: var(--azulOscuro);
+}
+
+.login{
+    padding-top: 120px;
+    padding-bottom: 100px;
+    box-shadow: 2px 2px 11px 0 rgb(0 0 0);
 }
 
 .box input[type = "text"],.box input[type = "password"]{
@@ -300,12 +314,12 @@ footer p{
     width: 300px;
     outline: none;
     color: var(--negro);
-    border-radius: 24px;
+    border-radius: .5rem;
     transition: 0.25s;
   }
   .box input[type = "text"]:focus,.box input[type = "password"]:focus{
     width: 350px;
-    border-color: var(--amarillo);
+    border-color: var(--verde);
   }
   .box input[type = "submit"]{
     border: 0;
@@ -313,16 +327,83 @@ footer p{
     display: block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid var(--azul);
+    border: 2px solid var(--verde);
     padding: 14px 40px;
     outline: none;
     color: var(--negro);
-    border-radius: 24px;
+    border-radius: .5rem;
     transition: 0.25s;
     cursor: pointer;
   }
   
   .box input[type = "submit"]:hover{
-    background: var(--azul);
+    background: var(--verde);
   }
 
+
+.login h2{
+    padding-bottom: 30px;
+}
+
+/***************************************************************/
+/***************************************************************/
+/***************************************************************/
+.redes {
+    padding: 1.2rem;
+}
+
+.formulario{
+    background-color: var(--gris);
+    width: min(60rem, 100%);
+    border-radius: 1rem;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.formulario fieldset{
+    border: none;
+}
+
+.formulario legend{
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: var(--amarillo);
+
+}
+.logo{
+    padding-top: 10px; margin-left: 500px;  float: left; margin-top: 0px;
+ 
+}
+
+.presentacion {
+    margin-right: 75rem;
+    width: 65%;
+}
+
+.contenedor-campos{
+
+}
+
+.campo {
+    margin-bottom: 1rem;
+}
+
+.campo label{
+    color: var(--blanco);
+    font-weight: bold;  
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5;
+    border-radius: .5;
+}
+.enviar .boton{
+    width: 100%;
+}
