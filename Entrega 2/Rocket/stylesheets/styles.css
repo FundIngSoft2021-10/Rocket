@@ -1,3 +1,4 @@
+
 :root{
     /*  PALETA DE COLORES  */
     --blanco: #ffffff;
@@ -61,7 +62,7 @@ h1,h2,h3{
     margin-top: 0;
     margin-right: auto;
     margin-bottom: 0;
-    margin-left: auto;
+    margin-left: 300px;
 
 }
 
@@ -422,3 +423,122 @@ footer p{
 /***************************************************************/
 /***************************************************************/
 /***************************************************************/
+.video {
+    width: 100%;
+    height: 100%;
+    padding-top: 0.5rem;
+}
+
+
+.sidenav {
+    height: 100%; 
+    width: 200px; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0; 
+    left: 65px;
+    overflow-x: hidden; 
+    padding-top: 420px;
+  }
+  
+
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: var(--negro);
+    display: block;
+   
+  }
+  
+
+  .sidenav a:hover {
+    color: var(--azulOscuro);
+  }
+  
+
+  .main {
+    margin-left: 160px; 
+    padding: 0px 10px;
+  }
+  
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+  .contenedor-tienda{
+    max-width: 120rem;
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: 300px;
+
+}
+
+.container-1{
+    width: 300px;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .container-1 input#search{
+    width: 1200px;
+    height: 50px;
+    background: #2b303b;
+    border: none;
+    font-size: 10pt;
+    float: left;
+    color: var(--blanco);
+    padding-left: 45px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+
+  .container-1 input#search::-webkit-input-placeholder {
+    color: #65737e;
+ }
+  
+ .container-1 input#search:-moz-placeholder { /* Firefox 18- */
+    color: #65737e;  
+ }
+  
+ .container-1 input#search::-moz-placeholder {  /* Firefox 19+ */
+    color: #65737e;  
+ }
+  
+ .container-1 input#search:-ms-input-placeholder {  
+    color: #65737e;  
+ }
+
+ .container-1 .icon{
+    position: absolute;
+    top: 50%;
+    margin-left: 17px;
+    margin-top: 17px;
+    z-index: 1;
+    color: var(--blanco);
+  }
+
+  .tiendaTitulo{
+    width: 1200px;
+    height: 50px;
+    background: var(--gris);
+    border: none;
+    font-size: 20pt;
+    color: var(--blanco);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    justify-content: center;
+    font-weight: 400;
+    font-family: 'Playfair Display', serif;
+    padding-top: .5rem;
+   
+  }
+
+ 
