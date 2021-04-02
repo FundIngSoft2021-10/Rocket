@@ -32,7 +32,7 @@
         </div>
 
         <div class="btn-carrito">
-            <a class="boton boton-75" href="carrito.html">Carrito</a>
+            <a class="boton boton-75" href="index.html">Home</a>
         </div>
 
     </header>
@@ -48,11 +48,12 @@
                 <ul id="carrito" class="list-group"></ul>
                 <hr>
                 <!-- Precio total -->
-                <p class="text-right">Total: <span id="total"></span>&euro;</p>
+                <p class="text-right">Total: <span id="total">0.000</span>&euro;</p>
                 <button id="boton-vaciar" class="boton boton-75">Vaciar</button>
             </aside>
         </div>
     </div>
+
     <script>
         window.onload = function () {
             // Variables
@@ -61,25 +62,25 @@
                     id: 1,
                     nombre: 'Fifa 2021',
                     precio: 86000,
-                    imagen: 'fifa.jpeg'
+                    imagen: 'img/fifa.jpeg'
                 },
                 {
                     id: 2,
-                    nombre: 'Cebolla',
-                    precio: 1.2,
-                    imagen: 'cebolla.jpg'
+                    nombre: 'Among Us',
+                    precio: 10000,
+                    imagen: 'img/among.jpeg'
                 },
                 {
                     id: 3,
-                    nombre: 'Calabacin',
-                    precio: 2.1,
-                    imagen: 'calabacin.jpg'
+                    nombre: 'Minecraft',
+                    precio: 105000,
+                    imagen: 'img/minecraft.jpg'
                 },
                 {
                     id: 4,
-                    nombre: 'Fresas',
-                    precio: 0.6,
-                    imagen: 'fresas.jpg'
+                    nombre: 'Inside',
+                    precio: 50000,
+                    imagen: 'img/inside.jpg'
                 }
 
             ];
@@ -101,7 +102,7 @@
                 baseDeDatos.forEach((info) => {
                     // Estructura
                     const miNodo = document.createElement('div');
-                    miNodo.classList.add('card', 'col-sm-10');
+                    miNodo.classList.add('card', 'col-sm-5');
                     // Body
                     const miNodoCardBody = document.createElement('div');
                     miNodoCardBody.classList.add('card-body');
