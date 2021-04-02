@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
     <link rel="preload" href="stylesheets/styles.css" as="style">
     <link href="stylesheets/styles.css" rel="stylesheet">
-    
+    <script src="https://kit.fontawesome.com/18cfddf396.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -65,25 +65,113 @@
                 <span class="icon"><i class="fa fa-search"></i></span>
                 <input type="search" id="search" placeholder="Buscar..." />
             </div>
-          </div>
+        </div>
 
         <video class="video" width="1250" height="400" autoplay>
             <source src="videos/intro.mp4" type="video/mp4">
         </video>
+        <div class="tiendatodo">
+            <div class="contenedor-menu">
+                <a href="#" class="btn-menu"></a>
 
-        <div class="sidenav">
-            <a href="#">Categorias</a>
-            <a href="#">Estrenos</a>
-            <a href="#">Mas vendidos</a>
-            <a href="#">Mas donados</a>
-          </div>
+                <ul class="menu">
+                    <li><a href="#"><i class="fa fa-bars"></i></a>
+                        <ul>
+                            <li><a href="#"><i class="fas izquierdo fa-rocket"></i> Categorias</a></li>
+                            <li><a href="#"><i class="fas fa-plus-circle"></i> Estrenos</a></li>
+                            <li><a href="#"><i class="fas fa-fire"></i> Mas vendidos</a></li>
+                            <li><a href="#"><i class="fas fa-coins"></i> Mas donados</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="contenedor sombra">
+                <p class="tiendaTitulo">Recomendados por la comunidad</p>
+                <section class="ofertas2">
+                    <li>
+                        <a>
+                            <h3 class="titulo">Inside</h3>
+                            <img src="img/inside.jpg">
+                            <span class="precio">$ 39.900</span>
+                        </a>
+                        <a>
+                            <h3 class="titulo">FireWatch</h3>
+                            <img src="img/firewatch.jpg">
+                            <span class="precio">$ 6.000 - 15% Dcto</span>
+                        </a>
+                        <a>
+                            <h3 class="titulo">Fall Guys</h3>
+                            <img src="img/images.jpg">
+                            <span class="precio">$ 26.000 - 55% Dcto</span>
+                           
+                        </a>
+                        
+                    </li>
 
-        <p class="tiendaTitulo">Recomendados por la comunidad</p>
-        <p class="tiendaTitulo">Juegos en tendencia</p>
-        <p class="tiendaTitulo">Juegos por debajo de $20.000</p>
-        <p class="tiendaTitulo">Mas vendidos</p>
-          
-        
+                </section>
+                <p class="tiendaTitulo">Juegos en tendencia</p>
+                <section class="destacados2">
+                    <div class="carrusel">
+                        <ul>
+                            <li id="slide1">
+                                <img src="img/Cuo.jpg" />
+                            </li>
+                            <li id="slide2">
+                                <img src="img/limbo1.jpg" />
+                            </li>
+                            <li id="slide3">
+                                <img src="img/meetboy.jpg" />
+                            </li>
+                            <li id="slide4">
+                                <img src="img/minecraft.jpg" />
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <p class="tiendaTitulo">Juegos por debajo de $20.000</p>
+                <section class="ofertas2">
+                    <li>
+                        <a>
+                            <h3 class="titulo">Hades</h3>
+                            <img src="img/Hades.jpg">
+                            <span class="precio">19.900</span>
+                        </a>
+                        <a>
+                            <h3 class="titulo">Journey</h3>
+                            <img src="img/journey.jpg">
+                            <span class="precio">9.900</span>
+                        </a>
+                        <a>
+                            <h3 class="titulo">Cave Story</h3>
+                            <img src="img/cavestory.jpg">
+                            <span class="precio">15.900</span>
+                        </a>
+                    </li>
+                </section>
+                <p class="tiendaTitulo">Mas vendidos</p>
+                <section class="destacados2">
+                    <div class="carrusel">
+                        <ul>
+                            <li id="slide1">
+                                <img src="img/meetboy.jpg" />
+                            </li>
+                            <li id="slide2">
+                                <img src="img/Hades.jpg" />
+                            </li>
+                            <li id="slide3">
+                                <img src="img/Cuo.jpg" />
+                            </li>
+                          
+                            
+                            <li id="slide4">
+                                <img src="img/minecraft.jpg" />
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+            </div>
+        </div>
     </main>
 
 
@@ -131,7 +219,8 @@
 
     </footer>
 
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/Entrega 2/Rocket/jquery.js"></script>
 </body>
 
 </html>
