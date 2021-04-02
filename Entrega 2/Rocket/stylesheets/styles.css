@@ -475,7 +475,7 @@ footer p{
 .btn-carrito{
     position: absolute;
     top: 4rem;
-    right: 130rem;
+    right: 170rem;
 }
 
 .btn-pagar{
@@ -681,3 +681,16 @@ footer p{
 .tiendatodo{
     width: 100%;
 }
+
+/*******************************************
+*****************************************/
+/*SOBRE NOSOTROS*/
+
+.contenedorC {
+    padding: 60px 0;
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+
