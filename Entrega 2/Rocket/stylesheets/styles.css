@@ -143,6 +143,26 @@ h1,h2,h3{
     margin-bottom: 2rem;
 }
 
+.rocket2 {
+    background-image: url(../img/banner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    position: relative;
+    background-position: center;
+    margin-bottom: 2rem;
+}
+
+.rocket3 {
+    background-image: url(../img/banner2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    position: relative;
+    background-position: center;
+    margin-bottom: 2rem;
+}
+
 .contenido-rocket {
     position: absolute;
     background-color: rgba(0, 0,0, .5);
