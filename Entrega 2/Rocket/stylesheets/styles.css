@@ -708,9 +708,9 @@ footer p{
 
 .contenedorC {
     padding: 60px 0;
-    width: 90%;
+    width: 60%;
     max-width: 1000px;
     margin: auto;
     overflow: hidden;
+    justify-content: center;
 }
-
