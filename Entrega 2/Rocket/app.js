@@ -14,6 +14,9 @@ dotenv.config({path:'./env/.env'});
 //4 - El directorio public 
 app.use('/stylesheets', express.static('stylesheets'));
 app.use('/stylesheets', express.static(__dirname + '/stylesheets'));
+app.use('/img', express.static('img'));
+app.use('/img', express.static(__dirname + 'img'));
+
 
 //5 - Establecemos el motor de plantillas ejs
 app.set('view engine', 'ejs');  
@@ -33,7 +36,6 @@ app.use(session({
 const connection = require('./database/db');
 
 //9 - Estableciendo las rutas
-
 app.get('/login', (req, res)=>{
     res.render('login');
 })
@@ -52,7 +54,9 @@ app.get('/noticias.html', (req, res)=>{
 app.get('/donación.html', (req, res)=>{
     res.render('donación');
 })
-
+app.get('/carrito.html', (req, res)=>{
+    res.render('carrito');
+})
 
 //10 - Registración 
 app.post('/register', async (req, res)=>{
