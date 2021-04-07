@@ -12,8 +12,8 @@ dotenv.config({path:'./env/.env'});
 
 ///////TODO
 //4 - El directorio public 
-app.use('/resources', express.static('public'));
-app.use('/resources', express.static(__dirname + '/public'));
+app.use('/stylesheets', express.static('stylesheets'));
+app.use('/stylesheets', express.static(__dirname + '/stylesheets'));
 
 //5 - Establecemos el motor de plantillas ejs
 app.set('view engine', 'ejs');  
@@ -37,12 +37,22 @@ const connection = require('./database/db');
 app.get('/login', (req, res)=>{
     res.render('login');
 })
-app.get('/register', (req, res)=>{
-    res.render('register');
+app.get('/registro', (req, res)=>{
+    res.render('registro');
 })
-app.get('/tienda', (req, res)=>{
+app.get('/tienda.html', (req, res)=>{
     res.render('tienda');
 })
+app.get('/sobreNosotros.html', (req, res)=>{
+    res.render('sobreNosotros');
+})
+app.get('/noticias.html', (req, res)=>{
+    res.render('noticias');
+})
+app.get('/donación.html', (req, res)=>{
+    res.render('donación');
+})
+
 
 //10 - Registración 
 app.post('/register', async (req, res)=>{
