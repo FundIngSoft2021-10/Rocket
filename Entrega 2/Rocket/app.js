@@ -51,15 +51,15 @@ app.get('/sobreNosotros.html', (req, res)=>{
 app.get('/noticias.html', (req, res)=>{
     res.render('noticias');
 })
-app.get('/donación.html', (req, res)=>{
-    res.render('donación');
+app.get('/donacion.html', (req, res)=>{
+    res.render('donacion');
 })
 app.get('/carrito.html', (req, res)=>{
     res.render('carrito');
 })
 
 //10 - Registración 
-app.post('/register', async (req, res)=>{
+app.post('/registro', async (req, res)=>{
     const user = req.body.user;
     const name = req.body.name;
     const pass = req.body.pass;
@@ -67,7 +67,7 @@ app.post('/register', async (req, res)=>{
     let passwordHash = await bcryptjs.hash(pass, 8);
     connection.query('INSERT INTO users SET ?', {user:user, name:name, rol:rol, pass:passwordHash}, async(error, results)=>{
         if(error){
-            res.render('register',{
+            res.render('registro',{
                 alert: true,
                 alertTitle: "Registration error",
                 alertMessage:"No se ha podido registrar!",
@@ -78,7 +78,7 @@ app.post('/register', async (req, res)=>{
             })
             console.log(error);
         }else{
-            res.render('register',{
+            res.render('registro',{
                 alert: true,
                 alertTitle: "Registration",
                 alertMessage:"¡Successful Registration!",
