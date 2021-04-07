@@ -285,7 +285,7 @@ footer p{
 .btn-login-registro{
     position: absolute;
     top: 4rem;
-    right: 36.8rem; 
+    right: 36.8rem;
 }
 
 .boton-75{
@@ -316,30 +316,31 @@ footer p{
     color: var(--negro);
     border-radius: .5rem;
     transition: 0.25s;
-  }
-  .box input[type = "text"]:focus,.box input[type = "password"]:focus{
+ }
+
+ .box input[type = "text"]:focus,.box input[type = "password"]:focus{
     width: 350px;
-    border-color: var(--verde);
-  }
-  .box input[type = "submit"]{
+    border-color: var(--azulOscuro);
+ }
+
+.box input[type = "submit"]{
     border: 0;
     background: none;
     display: block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid var(--verde);
+    border: 2px solid var(--azulOscuro);
     padding: 14px 40px;
     outline: none;
     color: var(--negro);
     border-radius: .5rem;
     transition: 0.25s;
     cursor: pointer;
-  }
+}
   
-  .box input[type = "submit"]:hover{
-    background: var(--verde);
-  }
-
+.box input[type = "submit"]:hover{
+    background: var(--azulOscuro);
+}
 
 .login h2{
     padding-bottom: 30px;
