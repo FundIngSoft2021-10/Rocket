@@ -67,7 +67,17 @@ h1,h2,h3{
    top: -65px;
 
 }
-
+.contenedor-donacion{
+    max-width: 120rem;
+    margin-top: 0;
+    margin-right: 50rem;
+    margin-bottom: 0;
+    position:relative;
+   left: 300px;
+   top: -65px;
+    padding-top: 5rem;
+    padding-right: 5rem;
+}
 .boton{
     background-color: var(--azul);
     color: var(--blanco);
@@ -524,9 +534,7 @@ footer p{
     width: 65%;
 }
 
-.contenedor-campos{
 
-}
 
 .campo {
     margin-bottom: 1rem;
@@ -699,7 +707,7 @@ footer p{
     padding: 0px 10px;
   }
   
-  
+}  
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
@@ -764,6 +772,9 @@ footer p{
     width: 100%;
 }
 
+.donaciontodo{
+    width: 100%;
+}
 /*******************************************
 *****************************************/
 /*SOBRE NOSOTROS*/
@@ -775,4 +786,13 @@ footer p{
     margin: auto;
     overflow: hidden;
     justify-content: center;
+}
+
+.contenedor-donacion{
+    max-width: 120rem;
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: 300px;
+
 }
