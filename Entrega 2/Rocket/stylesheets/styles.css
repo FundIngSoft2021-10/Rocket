@@ -564,9 +564,13 @@ footer p{
 }
 
 .contenedor-carrito{
-    position: fixed;
-    top: 10rem;
-    right: 50rem;
+    max-width: 120rem;
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    position:relative;
+   left: 300px;
+   top: 150px;
 }
 
 /***************************************************************/
