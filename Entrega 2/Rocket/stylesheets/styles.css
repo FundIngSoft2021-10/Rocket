@@ -524,9 +524,6 @@ footer p{
     width: 65%;
 }
 
-.contenedor-campos{
-
-}
 
 .campo {
     margin-bottom: 1rem;
@@ -702,8 +699,12 @@ footer p{
 }
   
   @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
   }
 
   .contenedor-tienda{
