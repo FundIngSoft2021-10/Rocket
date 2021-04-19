@@ -27,20 +27,31 @@
         </div>
 
         <div class="btn-login-registro">
-            <a class="boton boton-75" href="login">Iniciar sesión</a>
-            <a class="boton boton-75" href="registro">Registrarse</a>
+            <a class="boton boton-75" href="login.html">Iniciar sesión</a>
+            <a class="boton boton-75" href="registro.html">Registrarse</a>
         </div>
 
         <div class="btn-carrito">
-            <a class="boton boton-75" href="/">Home</a>
+            <a class="boton boton-75" href="index.html">Home</a>
         </div>
 
     </header>
 
-    <div class="container">
+    <div class="nav-bg">
+        <nav class="navegacion contenedor">
+            <!-- Menu navegacion -->
+            <a href="index.html">Home</a>
+            <a href="tienda.html">Tienda</a>
+            <a href="sobreNosotros.html">Sobre nosotros</a>
+            <a href="noticias.html">Noticias</a>
+            <a href="donación.html">Proyectos Para Donar</a>
+        </nav>
+    </div>
+
+    <div class="contenedor-carrito">
         <div class="row">
             <!-- Elementos generados a partir del JSON -->
-            <main id="items" class="col-sm-8 row"></main>
+            <main id="items" class="col-sm-6 row"></main>
             <!-- Carrito -->
             <aside class="col-sm-4">
                 <h2>Carrito</h2>
@@ -48,8 +59,9 @@
                 <ul id="carrito" class="list-group"></ul>
                 <hr>
                 <!-- Precio total -->
-                <p class="text-right">Total: <span id="total">0.000</span>&euro;</p>
+                <p class="text-right">Total: <span id="total">0</span> COP</p>
                 <button id="boton-vaciar" class="boton boton-75">Vaciar</button>
+                <button id=(boton-pagar" class="boton boton-75")>Pagar</button>
             </aside>
         </div>
     </div>
@@ -121,7 +133,7 @@
                     // Boton 
                     const miNodoBoton = document.createElement('button');
                     miNodoBoton.classList.add('btn', 'btn-primary');
-                    miNodoBoton.textContent = '+';
+                    miNodoBoton.textContent = 'Añadir';
                     miNodoBoton.setAttribute('marcador', info.id);
                     miNodoBoton.addEventListener('click', anyadirProductoAlCarrito);
                     // Insertamos
@@ -171,7 +183,7 @@
                     // Creamos el nodo del item del carrito
                     const miNodo = document.createElement('li');
                     miNodo.classList.add('list-group-item', 'text-right', 'mx-2');
-                    miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0].nombre} - ${miItem[0].precio}€`;
+                    miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0].nombre} - ${miItem[0].precio} COP`;
                     // Boton de borrar
                     const miBoton = document.createElement('button');
                     miBoton.classList.add('btn', 'btn-danger', 'mx-5');
