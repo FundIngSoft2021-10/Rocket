@@ -28,10 +28,20 @@
             <h1 class="titulo">Rocket | <span class="subti">Comunidad gamer</span> </h1>
         </div>
 
-        <div class="btn-login-registro">
-            <a class="boton boton-75" href="login.html">Iniciar sesión</a>
-            <a class="boton boton-75" href="registro.html">Registrarse</a>
-        </div>
+        <% if (login) { %>
+            <div class="sesion-activa">
+                <div class="nombre-usuario"> <%= name %> </div>
+                <!-- <h1>El usuario conectado es: <strong> <%= name %></strong></h1> -->
+                <a href="logout" class="boton boton-75 logout">Logout</a>
+            </div>
+        <%} else { %>
+            <!-- <h1><strong><%= name %></strong></h1>
+            <a href="login" class="login">Ir a LOGIN</a> -->
+            <div class="btn-login-registro">
+                <a class="boton boton-75" href="login">Iniciar sesión</a>
+                <a class="boton boton-75" href="register">Registrarse</a>
+            </div>
+        <% } %>
 
         <div class="btn-carrito">
             <a class="boton boton-75" href="carrito.html">Carrito</a>
