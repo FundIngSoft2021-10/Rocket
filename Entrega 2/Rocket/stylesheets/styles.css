@@ -193,14 +193,54 @@ h1,h2,h3{
 }
 
 .comentarios {
+    width: 100%;
+    height: 200px;
+    flex-direction: column; 
+}
+.comentarios .fotousu{
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    position: relative;
+    left: 25px;
+    top: 10px;
+}
+.comentarios nav  {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-direction:row;
+    position: relative;
+    left: 220px;
+    top: -128px;
+    width: 80%;
+    background-color: var(--azul);
+}
+.comentarios nav a  {
+    color: var(--blanco);
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: block;
+    text-align:center;
+    width: 33.3%;
+    height: 30px;
+}
+.comentarios nav a:hover{
+    background-color: var(--azulOscuro);
     
 }
 
-
+.comentarios .fotousu img{
+   width: 100%;
+   height: auto;
+}
+.comentarios textarea{
+    width: 80%;
+    height: 80px;
+    resize: none;
+    border-radius: 15px;
+    position: relative;
+    left: 220px;
+    top: -115px;
+}
 .usuario{
     position: absolute;
     top: 60rem;
