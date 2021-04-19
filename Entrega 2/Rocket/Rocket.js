@@ -16,11 +16,6 @@ class Rocket {
     get getUsuarios(){
         return this.listaUsuarios;
     }
-
-    saludar()
-    {
-        alert("ing.soft nos va a vomitar en la cara");
-    }   
     
 }
 
