@@ -1,4 +1,4 @@
-import "Usuarios.js"
+
 class Rocket{
     constructor (){
         var listaUsuarios = new Array();
@@ -14,10 +14,13 @@ class Rocket{
     }
      saludar()
      {
-         alert("malparidos todos en especial nicolas");
+         alert("ing.soft nos va a vomitar en la cara");
      }   
     
 }
 
 rocket = new Rocket();
-rocket.crearUsuario();
+
+
+
+
