@@ -42,7 +42,7 @@ app.get('/login', (req, res)=>{
 app.get('/registro', (req, res)=>{
     res.render('registro');
 })
-app.get('/tienda.html', (req, res)=>{
+/*app.get('/tienda.html', (req, res)=>{
     res.render('tienda');
 })
 app.get('/sobreNosotros.html', (req, res)=>{
@@ -56,7 +56,7 @@ app.get('/donacion.html', (req, res)=>{
 })
 app.get('/carrito.html', (req, res)=>{
     res.render('carrito');
-})
+})*/
 
 //10 - Registración 
 app.post('/registro', async (req, res)=>{
@@ -149,7 +149,72 @@ app.get('/', (req, res)=>{
         })
     }
 }) 
+app.get('/tienda.html', (req, res)=>{
+    if(req.session.loggedin){
+        res.render('tienda',{
+            login: true,
+            name: req.session.name
+        });
+    }else{
+        res.render('tienda', {
+            login: false,
+            name: 'Debe iniciar sesión'
+        })
+    }
+}) 
+app.get('/sobreNosotros.html', (req, res)=>{
+    if(req.session.loggedin){
+        res.render('sobreNosotros',{
+            login: true,
+            name: req.session.name
+        });
+    }else{
+        res.render('sobreNosotros', {
+            login: false,
+            name: 'Debe iniciar sesión'
+        })
+    }
+}) 
 
+app.get('/noticias.html', (req, res)=>{
+    if(req.session.loggedin){
+        res.render('noticias',{
+            login: true,
+            name: req.session.name
+        });
+    }else{
+        res.render('noticias', {
+            login: false,
+            name: 'Debe iniciar sesión'
+        })
+    }
+}) 
+app.get('/donacion.html', (req, res)=>{
+    if(req.session.loggedin){
+        res.render('donacion',{
+            login: true,
+            name: req.session.name
+        });
+    }else{
+        res.render('donacion', {
+            login: false,
+            name: 'Debe iniciar sesión'
+        })
+    }
+}) 
+app.get('/carrito.html', (req, res)=>{
+    if(req.session.loggedin){
+        res.render('carrito',{
+            login: true,
+            name: req.session.name
+        });
+    }else{
+        res.render('carrito', {
+            login: false,
+            name: 'Debe iniciar sesión'
+        })
+    }
+}) 
 
 //13 - Logout
 app.get('/logout', (req, res)=>{

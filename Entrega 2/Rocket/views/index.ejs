@@ -31,15 +31,14 @@
         <% if (login) { %>
             <div class="sesion-activa">
                 <div class="nombre-usuario"> <%= name %> </div>
-                <!-- <h1>El usuario conectado es: <strong> <%= name %></strong></h1> -->
+                
                 <a href="logout" class="boton boton-75 logout">Logout</a>
             </div>
         <%} else { %>
-            <!-- <h1><strong><%= name %></strong></h1>
-            <a href="login" class="login">Ir a LOGIN</a> -->
+            
             <div class="btn-login-registro">
                 <a class="boton boton-75" href="login">Iniciar sesión</a>
-                <a class="boton boton-75" href="register">Registrarse</a>
+                <a class="boton boton-75" href="registro">Registrarse</a>
             </div>
         <% } %>
 
@@ -52,7 +51,7 @@
     <div class="nav-bg">
         <nav class="navegacion contenedor">
             <!-- Menu navegacion -->
-            <a href="index.html">Home</a>
+            <a href="/">Home</a>
             <a href="tienda.html">Tienda</a>
             <a href="sobreNosotros.html">Sobre nosotros</a>
             <a href="noticias.html">Noticias</a>
