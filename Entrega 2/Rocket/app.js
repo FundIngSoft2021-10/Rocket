@@ -1,39 +1,36 @@
-const Juego = require ('./js/Juego')
+const Juego = require ('./js/Juego');
+const Usuario = require ('./js/Usuario');
+const Carrito = require ('./js/Carrito');
 
-class Carrito {
-    constructor() {
-        this.listaCarrito = new Array();
-        this.total = 0;
-    }
-
-    añadirJuego(juego) {
-        this.listaCarrito.push(juego);
-    }
-    eliminarJuego(juego) {
-        var i = listaCarrito.indexOf(juego);
-        if (i !== -1) {
-            listaCarrito.splice(i, 1);
-        }
-    }
-    vaciaCarrito() {
-        for (carrito in listaCarrito) {
-            this.eliminarJuego(this.listaCarrito[carrito]);
-        }
-    }
-}
-
-class Usuario {
-    constructor(nombre, nomUsuario, contrasena, rol, email) {
-        this.nombre = nombre;
-        this.nomUsuario = nomUsuario;
-        this.contrasena = contrasena;
-        this.rol = rol;
-        this.email = email;
-        this.carrito = new Carrito();
-    }
-}
 
 listaJuegos = new Array();
+baseDeDatos = [
+    {
+        id: 1,
+        nombre: 'Fifa 2021',
+        precio: 86000,
+        imagen: 'img/fifa.jpeg'
+    },
+    {
+        id: 2,
+        nombre: 'Among Us',
+        precio: 10000,
+        imagen: 'img/among.jpeg'
+    },
+    {
+        id: 3,
+        nombre: 'Minecraft',
+        precio: 105000,
+        imagen: 'img/minecraft.jpg'
+    },
+    {
+        id: 4,
+        nombre: 'Inside',
+        precio: 50000,
+        imagen: 'img/inside.jpg'
+    }
+
+];
 listaUsuarios = new Array();
 
 //Invocamos a express
@@ -54,6 +51,7 @@ app.use('/stylesheets', express.static('stylesheets'));
 app.use('/stylesheets', express.static(__dirname + '/stylesheets'));
 app.use('/img', express.static('img'));
 app.use('/img', express.static(__dirname + 'img'));
+app.use(express.static(__dirname + '/js'));
 
 //Establecemos el motor de plantillas ejs
 app.set('view engine', 'ejs');
@@ -79,7 +77,7 @@ app.get('/login', (req, res) => {
 app.get('/registro', (req, res) => {
     res.render('registro');
 })
-app.use(express.static(__dirname + '/js'));
+
 
 //Registración 
 app.post('/registro', async (req, res) => {
@@ -137,6 +135,7 @@ app.post('/auth', async (req, res) => {
                 })
             } else {
                 req.session.loggedin = true;
+                usuarioActivo = req.session.user 
                 req.session.name = results[0].name
                 res.render('login', {
                     alert: true,
@@ -161,6 +160,19 @@ app.post('/auth', async (req, res) => {
         })
     }
 })
+
+//PagoCarrito
+/* app.post('/pagoDeCarrito', async (req, res) => {
+    res.render('carrito', {
+        alert: true,
+        alertTitle: "Pago exitoso",
+        alertMessage: "¡PAGO REALIZADO!",
+        alertIcon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+        ruta: ''
+    })
+}) */
 
 //Auth pages
 app.get('/', (req, res) => {
@@ -228,17 +240,15 @@ app.get('/donacion', (req, res) => {
         })
     }
 })
+
 app.get('/carrito', (req, res) => {
     if (req.session.loggedin) {
         res.render('carrito', {
             login: true,
-            name: req.session.name
+            name: req.session.name,
         });
     } else {
-        res.render('carrito', {
-            login: false,
-            name: 'Debe iniciar sesión'
-        })
+        res.redirect('/')
     }
 })
 

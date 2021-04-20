@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- Información legible por el navegador, idioma etc... -->
     <meta charset="UTF-8">
@@ -15,8 +16,10 @@
     <link rel="preload" href="stylesheets/styles.css" as="style">
     <script src="https://kit.fontawesome.com/18cfddf396.js" crossorigin="anonymous"></script>
     <link href="stylesheets/styles.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -28,19 +31,21 @@
 
         <% if (login) { %>
             <div class="sesion-activa">
-                <div class="nombre-usuario"> <%= name %> </div>
-                
+                <div class="nombre-usuario">
+                    <%= name %>
+                </div>
+
                 <a href="logout" class="boton boton-75 logout">Logout</a>
             </div>
-        <%} else { %>
-            
-            <div class="btn-login-registro">
-                <a class="boton boton-75" href="login">Iniciar sesión</a>
-                <a class="boton boton-75" href="registro">Registrarse</a>
-            </div>
-        <% } %>
+            <%} else { %>
 
-        <!-- <div class="btn-carrito">
+                <div class="btn-login-registro">
+                    <a class="boton boton-75" href="login">Iniciar sesión</a>
+                    <a class="boton boton-75" href="registro">Registrarse</a>
+                </div>
+                <% } %>
+
+                    <!-- <div class="btn-carrito">
             <a class="boton boton-75" href="index.html">Home</a>
         </div> -->
 
@@ -63,6 +68,7 @@
             <main id="items" class="col-sm-6 row"></main>
             <!-- Carrito -->
             <aside class="col-sm-4">
+                <form action="/pagoDeCarrito" method="POST"></form>
                 <h2>Carrito</h2>
                 <!-- Elementos del carrito -->
                 <ul id="carrito" class="list-group"></ul>
@@ -70,17 +76,19 @@
                 <!-- Precio total -->
                 <p class="text-right">Total: <span id="total">0</span> COP</p>
                 <button id="boton-vaciar" class="boton boton-75">Vaciar</button>
-                <button id="boton-pagar" class="boton boton-75">Pagar</button>
+                <button id="boton-pagar" type="submit" class="boton boton-75">Pagar</button>
             </aside>
         </div>
     </div>
-    
+    <!-- <script>
+        console.log("<%=baseDeDatos[0].nombre%>");
+      </script> -->
+
     <script>
-        
         window.onload = function () {
-            
+
             // Variables
-            const baseDeDatos = [
+            baseDeDatos = [
                 {
                     id: 1,
                     nombre: 'Fifa 2021',
@@ -108,7 +116,7 @@
 
             ];
 
-            let carrito = [];
+            let carrito = []; //listaCarrito
             let total = 0;
             const DOMitems = document.querySelector('#items');
             const DOMcarrito = document.querySelector('#carrito');
@@ -116,12 +124,13 @@
             const DOMbotonVaciar = document.querySelector('#boton-vaciar');
             const DOMbotonPagar = document.querySelector('#boton-pagar');
             const miLocalStorage = window.localStorage;
-            
+
             // Funciones
 
             /**
             * Dibuja todos los productos a partir de la base de datos. No confundir con el carrito
             */
+
             function renderizarProductos() {
                 baseDeDatos.forEach((info) => {
                     // Estructura
@@ -260,15 +269,23 @@
 
             }
             function pagarCarrito() {
-                alert("Pago exitoso <3")
+                Swal.fire({
+                    title: "Pago exitoso",
+                    text: "¡PAGO REALIZADO!",
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(() => {
+                    window.location = ''
+                })
                 vaciarCarrito();
             }
 
-            function guardarCarritoEnLocalStorage () {
+            function guardarCarritoEnLocalStorage() {
                 miLocalStorage.setItem('carrito', JSON.stringify(carrito));
             }
 
-            function cargarCarritoDeLocalStorage () {
+            function cargarCarritoDeLocalStorage() {
                 // ¿Existe un carrito previo guardado en LocalStorage?
                 if (miLocalStorage.getItem('carrito') !== null) {
                     // Carga la información
@@ -287,7 +304,24 @@
         }
 
     </script>
-    
-    <script src="Carrito.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <% if(typeof alert !="undefined" ) { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %> ,
+                timer: <%= timer %>
+            }).then(() => {
+                    window.location = '/<%= ruta %>'
+                })
+        </script>
+        <% } %>
+
+            <script src="carritoVisual.js"></script>
+            <script src="Carrito.js"></script>
 </body>
+
 </html>
