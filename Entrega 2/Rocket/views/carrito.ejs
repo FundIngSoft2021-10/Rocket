@@ -70,13 +70,15 @@
                 <!-- Precio total -->
                 <p class="text-right">Total: <span id="total">0</span> COP</p>
                 <button id="boton-vaciar" class="boton boton-75">Vaciar</button>
-                <button id=(boton-pagar" class="boton boton-75")>Pagar</button>
+                <button id="boton-pagar" class="boton boton-75">Pagar</button>
             </aside>
         </div>
     </div>
-
+    
     <script>
+        
         window.onload = function () {
+            
             // Variables
             const baseDeDatos = [
                 {
@@ -112,8 +114,9 @@
             const DOMcarrito = document.querySelector('#carrito');
             const DOMtotal = document.querySelector('#total');
             const DOMbotonVaciar = document.querySelector('#boton-vaciar');
+            const DOMbotonPagar = document.querySelector('#boton-pagar');
             const miLocalStorage = window.localStorage;
-
+            
             // Funciones
 
             /**
@@ -256,6 +259,10 @@
                 localStorage.clear();
 
             }
+            function pagarCarrito() {
+                alert("Pago exitoso <3")
+                vaciarCarrito();
+            }
 
             function guardarCarritoEnLocalStorage () {
                 miLocalStorage.setItem('carrito', JSON.stringify(carrito));
@@ -271,7 +278,7 @@
 
             // Eventos
             DOMbotonVaciar.addEventListener('click', vaciarCarrito);
-
+            DOMbotonPagar.addEventListener('click', pagarCarrito);
             // Inicio
             cargarCarritoDeLocalStorage();
             renderizarProductos();
@@ -280,5 +287,7 @@
         }
 
     </script>
+    
+    <script src="Carrito.js"></script>
 </body>
 </html>
