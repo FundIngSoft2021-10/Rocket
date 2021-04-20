@@ -37,13 +37,12 @@
 
                 <a href="logout" class="boton boton-75 logout">Logout</a>
             </div>
-            <%} else { %>
-
-                <div class="btn-login-registro">
-                    <a class="boton boton-75" href="login">Iniciar sesión</a>
-                    <a class="boton boton-75" href="registro">Registrarse</a>
-                </div>
-                <% } %>
+        <%} else { %>
+            <div class="btn-login-registro">
+                <a class="boton boton-75" href="login">Iniciar sesión</a>
+                <a class="boton boton-75" href="registro">Registrarse</a>
+            </div>
+        <% } %>
 
                     <!-- <div class="btn-carrito">
             <a class="boton boton-75" href="index.html">Home</a>
@@ -80,42 +79,12 @@
             </aside>
         </div>
     </div>
-    <!-- <script>
-        console.log("<%=baseDeDatos[0].nombre%>");
-      </script> -->
+
 
     <script>
         window.onload = function () {
-
             // Variables
-            baseDeDatos = [
-                {
-                    id: 1,
-                    nombre: 'Fifa 2021',
-                    precio: 86000,
-                    imagen: 'img/fifa.jpeg'
-                },
-                {
-                    id: 2,
-                    nombre: 'Among Us',
-                    precio: 10000,
-                    imagen: 'img/among.jpeg'
-                },
-                {
-                    id: 3,
-                    nombre: 'Minecraft',
-                    precio: 105000,
-                    imagen: 'img/minecraft.jpg'
-                },
-                {
-                    id: 4,
-                    nombre: 'Inside',
-                    precio: 50000,
-                    imagen: 'img/inside.jpg'
-                }
-
-            ];
-
+            var baseDeDatos = <%-listaJuegosJason %>;
             let carrito = []; //listaCarrito
             let total = 0;
             const DOMitems = document.querySelector('#items');
@@ -126,11 +95,9 @@
             const miLocalStorage = window.localStorage;
 
             // Funciones
-
             /**
             * Dibuja todos los productos a partir de la base de datos. No confundir con el carrito
             */
-
             function renderizarProductos() {
                 baseDeDatos.forEach((info) => {
                     // Estructura
@@ -170,6 +137,17 @@
             /**
             * Evento para añadir un producto al carrito de la compra
             */
+            function anyadirProductoAlCarrito(evento) {
+                // Anyadimos el Nodo a nuestro carrito
+
+                carrito.push(evento.target.getAttribute('marcador'))
+                // Calculo el total
+                calcularTotal();
+                // Actualizamos el carrito 
+                renderizarCarrito();
+                // Actualizamos el LocalStorage
+                guardarCarritoEnLocalStorage();
+            }
             function anyadirProductoAlCarrito(evento) {
                 // Anyadimos el Nodo a nuestro carrito
                 carrito.push(evento.target.getAttribute('marcador'))
@@ -306,22 +284,7 @@
     </script>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <% if(typeof alert !="undefined" ) { %>
-        <script>
-            Swal.fire({
-                title: '<%= alertTitle %>',
-                text: '<%= alertMessage %>',
-                icon: '<%= alertIcon %>',
-                showConfirmButton: <%= showConfirmButton %> ,
-                timer: <%= timer %>
-            }).then(() => {
-                    window.location = '/<%= ruta %>'
-                })
-        </script>
-        <% } %>
 
-            <script src="carritoVisual.js"></script>
-            <script src="Carrito.js"></script>
 </body>
 
 </html>

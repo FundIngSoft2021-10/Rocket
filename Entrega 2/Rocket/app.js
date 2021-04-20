@@ -1,37 +1,31 @@
-const Juego = require ('./js/Juego');
-const Usuario = require ('./js/Usuario');
-const Carrito = require ('./js/Carrito');
+//Importamos clases
+const Juegos = require ('./js/Juego');
+const Usuarios = require ('./js/Usuario');
+const Carritos = require ('./js/Carrito');
+const Juego = Juegos.Juego;
+const Usuario = Usuarios.Usuario;
+const Carrito = Carritos.Carrito;
 
-
-listaJuegos = new Array();
-baseDeDatos = [
-    {
-        id: 1,
-        nombre: 'Fifa 2021',
-        precio: 86000,
-        imagen: 'img/fifa.jpeg'
-    },
-    {
-        id: 2,
-        nombre: 'Among Us',
-        precio: 10000,
-        imagen: 'img/among.jpeg'
-    },
-    {
-        id: 3,
-        nombre: 'Minecraft',
-        precio: 105000,
-        imagen: 'img/minecraft.jpg'
-    },
-    {
-        id: 4,
-        nombre: 'Inside',
-        precio: 50000,
-        imagen: 'img/inside.jpg'
-    }
-
-];
 listaUsuarios = new Array();
+listaJuegos = new Array();
+
+var juego1 = new Juego(1, 'Fifa 2021', 86000, 'ea', 'Deportes', 'img/fifa.jpeg');
+var juego2 = new Juego(2, 'Among Us', 10000, 'incognito', 'Casual', 'img/among.jpeg');
+var juego3 = new Juego(3, 'Minecraft', 105000, 'Microsoft', 'Casual', 'img/minecraft.jpg');
+var juego4 = new Juego(4, 'Inside', 50000, 'ea', 'Aventura', 'img/inside.jpg');
+listaJuegos.push(juego1);
+listaJuegos.push(juego2);
+listaJuegos.push(juego3);
+listaJuegos.push(juego4);
+
+var juego5 = new Juego(5, 'Fifa 2021', 86000, 'ea', 'Deportes', 'img/fifa.jpeg');
+var juego6 = new Juego(6, 'Among Us', 10000, 'incognito', 'Casual', 'img/among.jpeg');
+var juego7 = new Juego(7, 'Minecraft', 105000, 'Microsoft', 'Casual', 'img/minecraft.jpg');
+var juego8 = new Juego(8, 'Inside', 50000, 'ea', 'Aventura', 'img/inside.jpg');
+listaJuegos.push(juego5);
+listaJuegos.push(juego6);
+listaJuegos.push(juego7);
+listaJuegos.push(juego8);
 
 //Invocamos a express
 const express = require('express');
@@ -45,13 +39,12 @@ app.use(express.json());
 const dotenv = require('dotenv');
 dotenv.config({ path: './env/.env' });
 
-
 //Recursos 
 app.use('/stylesheets', express.static('stylesheets'));
 app.use('/stylesheets', express.static(__dirname + '/stylesheets'));
 app.use('/img', express.static('img'));
 app.use('/img', express.static(__dirname + 'img'));
-app.use(express.static(__dirname + '/js'));
+app.use('/js', express.static(__dirname + '/js'));
 
 //Establecemos el motor de plantillas ejs
 app.set('view engine', 'ejs');
@@ -240,12 +233,13 @@ app.get('/donacion', (req, res) => {
         })
     }
 })
-
 app.get('/carrito', (req, res) => {
     if (req.session.loggedin) {
         res.render('carrito', {
             login: true,
             name: req.session.name,
+            listaJuegos: listaJuegos,
+            listaJuegosJason: JSON.stringify(listaJuegos)
         });
     } else {
         res.redirect('/')
@@ -258,8 +252,6 @@ app.get('/logout', (req, res) => {
         res.redirect('/')
     })
 })
-
-
 
 //Modo escucha puerto 3000
 app.listen(3000, (req, res) => {
