@@ -1,12 +1,5 @@
-class Juego {
-    constructor(nombre, precio, autor, categoria,imagen) {
-        this.nombre = nombre;
-        this.precio = precio;
-        this.autor = autor;
-        this.categoria = categoria;
-        this.imagen = imagen;
-    }
-}
+const Juego = require ('./js/Juego')
+
 class Carrito {
     constructor() {
         this.listaCarrito = new Array();
@@ -43,33 +36,32 @@ class Usuario {
 listaJuegos = new Array();
 listaUsuarios = new Array();
 
-//1 - Invocamos a express
+//Invocamos a express
 const express = require('express');
 const app = express();
 
-//2 - Seteamos urlencoded para capturar los datos del formulario
+//Seteamos urlencoded para capturar los datos del formulario
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-//3 - Invocamos a dotenv (variables de entorno)
+//Invocamos a dotenv (variables de entorno)
 const dotenv = require('dotenv');
 dotenv.config({ path: './env/.env' });
 
-///////TODO
-//4 - El directorio public 
+
+//Recursos 
 app.use('/stylesheets', express.static('stylesheets'));
 app.use('/stylesheets', express.static(__dirname + '/stylesheets'));
 app.use('/img', express.static('img'));
 app.use('/img', express.static(__dirname + 'img'));
 
-
-//5 - Establecemos el motor de plantillas ejs
+//Establecemos el motor de plantillas ejs
 app.set('view engine', 'ejs');
 
-//6 - Invocamos a bcryptjs
+//Invocamos a bcryptjs
 const bcryptjs = require('bcryptjs');
 
-//7 - Var de session
+//Var de session
 const session = require('express-session');
 app.use(session({
     secret: 'secret',
@@ -77,20 +69,19 @@ app.use(session({
     saveUninitialized: true
 }));
 
-//8 - Invocamos al modulo de conexion de la BD
+//Invocamos al modulo de conexion de la BD
 const connection = require('./database/db');
 
-//9 - Estableciendo las rutas
+//Estableciendo las rutas
 app.get('/login', (req, res) => {
     res.render('login');
 })
 app.get('/registro', (req, res) => {
     res.render('registro');
 })
-
 app.use(express.static(__dirname + '/js'));
 
-//10 - Registración 
+//Registración 
 app.post('/registro', async (req, res) => {
     const user = req.body.user;
     const name = req.body.name;
@@ -127,7 +118,7 @@ app.post('/registro', async (req, res) => {
     })
 })
 
-//11 - Autenticacion 
+//Autenticacion 
 app.post('/auth', async (req, res) => {
     const user = req.body.user;
     const pass = req.body.pass;
@@ -171,7 +162,7 @@ app.post('/auth', async (req, res) => {
     }
 })
 
-//12 - Auth pages
+//Auth pages
 app.get('/', (req, res) => {
     if (req.session.loggedin) {
         res.render('index', {
@@ -185,7 +176,7 @@ app.get('/', (req, res) => {
         })
     }
 })
-app.get('/tienda.html', (req, res) => {
+app.get('/tienda', (req, res) => {
     if (req.session.loggedin) {
         res.render('tienda', {
             login: true,
@@ -198,7 +189,7 @@ app.get('/tienda.html', (req, res) => {
         })
     }
 })
-app.get('/sobreNosotros.html', (req, res) => {
+app.get('/sobreNosotros', (req, res) => {
     if (req.session.loggedin) {
         res.render('sobreNosotros', {
             login: true,
@@ -211,8 +202,7 @@ app.get('/sobreNosotros.html', (req, res) => {
         })
     }
 })
-
-app.get('/noticias.html', (req, res) => {
+app.get('/noticias', (req, res) => {
     if (req.session.loggedin) {
         res.render('noticias', {
             login: true,
@@ -225,7 +215,7 @@ app.get('/noticias.html', (req, res) => {
         })
     }
 })
-app.get('/donacion.html', (req, res) => {
+app.get('/donacion', (req, res) => {
     if (req.session.loggedin) {
         res.render('donacion', {
             login: true,
@@ -238,7 +228,7 @@ app.get('/donacion.html', (req, res) => {
         })
     }
 })
-app.get('/carrito.html', (req, res) => {
+app.get('/carrito', (req, res) => {
     if (req.session.loggedin) {
         res.render('carrito', {
             login: true,
@@ -252,7 +242,7 @@ app.get('/carrito.html', (req, res) => {
     }
 })
 
-//13 - Logout
+//Logout
 app.get('/logout', (req, res) => {
     req.session.destroy(() => {
         res.redirect('/')
