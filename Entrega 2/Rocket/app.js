@@ -1,3 +1,15 @@
+class Usuario {
+    constructor(nombre, nomUsuario, contrasena, rol, email){
+        this.nombre=nombre;
+        this.nomUsuario=nomUsuario;
+        this.contrasena=contrasena;
+        this.rol=rol;
+        this.email=email;
+    }
+}
+
+listaUsuarios = new Array();
+
 //1 - Invocamos a express
 const express = require('express');
 const app = express();
@@ -42,21 +54,6 @@ app.get('/login', (req, res)=>{
 app.get('/registro', (req, res)=>{
     res.render('registro');
 })
-/*app.get('/tienda.html', (req, res)=>{
-    res.render('tienda');
-})
-app.get('/sobreNosotros.html', (req, res)=>{
-    res.render('sobreNosotros');
-})
-app.get('/noticias.html', (req, res)=>{
-    res.render('noticias');
-})
-app.get('/donacion.html', (req, res)=>{
-    res.render('donacion');
-})
-app.get('/carrito.html', (req, res)=>{
-    res.render('carrito');
-})*/
 
 //10 - Registración 
 app.post('/registro', async (req, res)=>{
@@ -64,8 +61,12 @@ app.post('/registro', async (req, res)=>{
     const name = req.body.name;
     const pass = req.body.pass;
     const rol = req.body.rol;
+    const email = req.body.email;
+    const nuevoUsuario = new Usuario(name, user, pass, rol, email);
+    listaUsuarios.push(nuevoUsuario);
+    console.log(listaUsuarios[0]);
     let passwordHash = await bcryptjs.hash(pass, 8);
-    connection.query('INSERT INTO users SET ?', {user:user, name:name, rol:rol, pass:passwordHash}, async(error, results)=>{
+    connection.query('INSERT INTO users SET ?', {user:nuevoUsuario.nomUsuario, name:nuevoUsuario.nombre, rol:nuevoUsuario.rol, pass:passwordHash, email:nuevoUsuario.email}, async(error, results)=>{
         if(error){
             res.render('registro',{
                 alert: true,
