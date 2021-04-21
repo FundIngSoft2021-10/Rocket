@@ -18,14 +18,14 @@ listaJuegos.push(juego2);
 listaJuegos.push(juego3);
 listaJuegos.push(juego4);
 
-var juego5 = new Juego(5, 'Fifa 2021', 86000, 'ea', 'Deportes', 'img/fifa.jpeg');
+/* var juego5 = new Juego(5, 'Fifa 2021', 86000, 'ea', 'Deportes', 'img/fifa.jpeg');
 var juego6 = new Juego(6, 'Among Us', 10000, 'incognito', 'Casual', 'img/among.jpeg');
 var juego7 = new Juego(7, 'Minecraft', 105000, 'Microsoft', 'Casual', 'img/minecraft.jpg');
 var juego8 = new Juego(8, 'Inside', 50000, 'ea', 'Aventura', 'img/inside.jpg');
 listaJuegos.push(juego5);
 listaJuegos.push(juego6);
 listaJuegos.push(juego7);
-listaJuegos.push(juego8);
+listaJuegos.push(juego8); */
 
 //Invocamos a express
 const express = require('express');
@@ -45,6 +45,7 @@ app.use('/stylesheets', express.static(__dirname + '/stylesheets'));
 app.use('/img', express.static('img'));
 app.use('/img', express.static(__dirname + 'img'));
 app.use('/js', express.static(__dirname + '/js'));
+app.use('/videos', express.static(__dirname + '/videos'));
 
 //Establecemos el motor de plantillas ejs
 app.set('view engine', 'ejs');
