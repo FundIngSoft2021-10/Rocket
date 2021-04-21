@@ -16,7 +16,8 @@ html{
 *, *:before, *:after {
     box-sizing: inherit;
   }
-body{
+
+  body{
     font-size: 16px;
     font-family: 'Playfair Display', serif;
     background-image: linear-gradient(to top, #DFE9F3 0%, var(--blanco) 100%);
@@ -847,4 +848,92 @@ footer p{
     margin-bottom: 0;
     margin-left: 300px;
 
+}
+
+/* NOTICIAS*/
+#principal{
+    width: 70%; 
+    height: auto; 
+    overflow: hidden;
+     
+    margin: 10px auto; 
+}
+
+#publicaciones{
+    width: 70%; 
+    height: auto;
+    overflow: hidden;
+    border: 1px solid rgb(47, 47, 148);
+    margin: 1px; 
+}
+.post{
+    width: 100%; 
+    height: auto;
+    overflow: hidden;
+    padding: 7px; 
+    background: #fdfdfd; 
+    border-left-style: solid; 
+    border-left-width: 5px; 
+    border-left-color: #0489B1;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px #ccc;
+
+}
+
+.titu-pub{
+    font-family: 'calibri light'; 
+    font-size: 24px; 
+    color: #1f1d1d;
+    padding: 5px; 
+}
+
+#publicaciones .img-post{
+    width: 45%; 
+    height: 45%;
+    float: left;
+    margin: 7px 7px 7px 2px;
+    padding: 5px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px;     
+
+}
+
+#publicaciones .datos-publicaciones{
+    font-family: 'calibri light'; 
+    color: #1626b9; 
+}
+
+#publicaciones .parrafo-post{
+    font-family: 'calibri light'; 
+    font-size: 18px; 
+    color: #1f1d1d;
+    padding: 5px; 
+}
+
+#publicaciones .leer-mas{
+    background: #0489B1; 
+    color: #fff; 
+    border: 0px; 
+    padding: 5px; 
+    text-decoration: none; 
+    margin-top: 20px; 
+}
+
+#publicaciones .num-comentarios{
+    background: #0b3b39; 
+    color: #fff; 
+    border: 0px; 
+    border-radius: 5px; 
+    text-decoration: none;
+    padding: 5px; 
+}
+
+#publicaciones .enlace-paginacion{
+    text-decoration: none;
+    color: #0489B1; 
+
+}
+
+#publicaciones .enlace-paginacion : hover{
+    text-decoration: underline;
 }
