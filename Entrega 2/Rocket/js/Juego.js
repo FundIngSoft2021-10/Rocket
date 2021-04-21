@@ -1,5 +1,6 @@
 class Juego {
-    constructor(nombre, precio, autor, categoria,imagen) {
+    constructor(id, nombre, precio, autor, categoria,imagen) {
+        this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.autor = autor;
@@ -9,5 +10,5 @@ class Juego {
 };
 
 module.exports = {
-    Juego
+    Juego: Juego
 };

@@ -21,5 +21,5 @@ class Carrito {
 }
 
 module.exports = {
-    Carrito
+    Carrito: Carrito
 };

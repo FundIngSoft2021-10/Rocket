@@ -1,4 +1,4 @@
-import { Usuario } from "./Usuario.js";
+/* import { Usuario } from "./Usuario.js";
 import { ControladorUsuario } from "./ControladorUsuario.js";
 
 // DOM Events
@@ -35,3 +35,4 @@ document.getElementById("product-list").addEventListener("click", (e) => {
   ui.deleteProduct(e.target);
   e.preventDefault();
 });
+ */
