@@ -104,53 +104,38 @@
                 <textarea  name="" id="caja" cols="90" rows="10"></textarea>
                 <nav>
                     <a><i class="fas izquierdo fa-images"></i> Fotos</a>
-                    <a><i class="fas izquierdo fa-video""></i> Videos</a>
+                    <a><i class="fas izquierdo fa-video"></i> Videos</a>
                     <a><i class="fas izquierdo fa-icons"></i> Emojis</a>
                 </nav>
             </div>
-
-
 
         </section>
 
         <section class="ofertas">
             <h2 class="titulo">Promociones</h2>
             <li>
-                <a>
-                    <h3 class="titulo">Fifa 2021</h3>
-                    <img src="img/fifa.jpeg">
-                    <span class="precio">$ 86.000 - 30% Dcto</span>
-                </a>
-                <a>
-                    <h3 class="titulo">Fall Guys</h3>
-                    <img src="img/images.jpg">
-                    <span class="precio">$ 26.000 - 55% Dcto</span>
-                </a>
-                <a>
-                    <h3 class="titulo">Among us</h3>
-                    <img src="img/among.jpeg">
-                    <span class="precio">$ 6.000 - 15% Dcto</span>
-                </a>
+                <% listaPromociones.forEach(function(juego) { %>
+                    <a>
+                        <h3 class="titulo"><%= juego.nombre %></h3>
+                        <img src= <%= juego.imagen %> >
+                        <span id="precio" class="precio"> <%= new Intl.NumberFormat('es-CO', { style: "currency", currency: "COP" }).format(juego.precio*juego.promocion/100) %> </span>
+                        
+                    </a>
+                <% }); %>
             </li>
 
         </section>
 
-        <section class="destacados">
+        <section class="destacados">    
             <h2 class="titulo">Destacados</h2>
             <div class="carrusel">
                 <ul>
-                    <li id="slide1">
-                        <img src="img/Cuo.jpg" />
-                    </li>
-                    <li id="slide2">
-                        <img src="img/limbo1.jpg" />
-                    </li>
-                    <li id="slide3">
-                        <img src="img/meetboy.jpg" />
-                    </li>
-                    <li id="slide4">
-                        <img src="img/minecraft.jpg" />
-                    </li>
+                    <% for(let i = 0; i < listaDestacados.length; i++){ %>
+                        <li id="slide<%= i%>">
+                            <!-- <h3>slide<%= i%></h3> -->
+                            <img src="<%= listaDestacados[i].imagen%>" />
+                        </li>
+                    <% } %>
                 </ul>
             </div>
         </section>
@@ -158,21 +143,13 @@
         <section class="ofertas">
             <h2 class="titulo">Proximamente</h2>
             <li>
-                <a>
-                    <h3 class="titulo">Hollow Knight: Silksong</h3>
-                    <img src="img/silk.jpg">
-                    <span class="precio">PROXIMAMENTE</span>
-                </a>
-                <a>
-                    <h3 class="titulo">Wargroove</h3>
-                    <img src="img/wargroove.jpg">
-                    <span class="precio">PROXIMAMENTE</span>
-                </a>
-                <a>
-                    <h3 class="titulo">Celeste</h3>
-                    <img src="img/celeste.jpg">
-                    <span class="precio">PROXIMAMENTE</span>
-                </a>
+                <% listaProximamente.forEach(function(juego) { %>
+                    <a>
+                        <h3 class="titulo"><%= juego.nombre %></h3>
+                        <img src= <%= juego.imagen %> >
+                        <span id="precio" class="precio">PROXIMAMENTE</span>
+                    </a>
+                <% }); %>
             </li>
         </section>
 

@@ -1,22 +1,16 @@
 //Importamos clases
-const Juegos = require ('./js/Juego');
-const Usuarios = require ('./js/Usuario');
-const Carritos = require ('./js/Carrito');
+const Juegos = require('./js/Juego');
+const Usuarios = require('./js/Usuario');
+const Carritos = require('./js/Carrito');
 const Juego = Juegos.Juego;
 const Usuario = Usuarios.Usuario;
 const Carrito = Carritos.Carrito;
 
 listaUsuarios = new Array();
 listaJuegos = new Array();
-
-var juego1 = new Juego(1, 'Fifa 2021', 86000, 'ea', 'Deportes', 'img/fifa.jpeg');
-var juego2 = new Juego(2, 'Among Us', 10000, 'incognito', 'Casual', 'img/among.jpeg');
-var juego3 = new Juego(3, 'Minecraft', 105000, 'Microsoft', 'Casual', 'img/minecraft.jpg');
-var juego4 = new Juego(4, 'Inside', 50000, 'ea', 'Aventura', 'img/inside.jpg');
-listaJuegos.push(juego1);
-listaJuegos.push(juego2);
-listaJuegos.push(juego3);
-listaJuegos.push(juego4);
+listaPromociones = new Array();
+listaDestacados = new Array();
+listaProximamente = new Array();
 
 /* var juego5 = new Juego(5, 'Fifa 2021', 86000, 'ea', 'Deportes', 'img/fifa.jpeg');
 var juego6 = new Juego(6, 'Among Us', 10000, 'incognito', 'Casual', 'img/among.jpeg');
@@ -71,6 +65,40 @@ app.get('/login', (req, res) => {
 app.get('/registro', (req, res) => {
     res.render('registro');
 })
+
+//LeerJuegos
+/* connection.query('SELECT * FROM juegos WHERE 1', async (error, results) => {
+    for (let i = 0; i < results.length + 1; i++) {
+        connection.query('SELECT * FROM juegos WHERE id = ?', [i], async (error, results) => {
+            let juego = new Juego(results[0].id, results[0].nombre, results[0].precio, results[0].id_usuario, results[0].categoria, results[0].imagen, results[0].promocion);
+            listaJuegos.push(juego);
+        })
+    }
+}) */
+
+//Leer juegos en promocion
+connection.query('SELECT * FROM juegos WHERE promocion > 0', async (error, results) => {
+    for (let i = 0; i < results.length; i++) {
+        var juego = new Juego(results[i].id, results[i].nombre, results[i].precio, results[i].id_usuario, results[i].categoria, results[i].imagen, results[i].promocion);
+        listaPromociones.push(juego);
+    }
+})
+
+//Leer juegos destacados
+connection.query('SELECT * FROM juegos WHERE destacado = 1', async (error, results) => {
+    for (let i = 0; i < results.length; i++) {
+        var juego = new Juego(results[i].id, results[i].nombre, results[i].precio, results[i].id_usuario, results[i].categoria, results[i].imagen, results[i].promocion);
+        listaDestacados.push(juego);
+    }
+}) 
+
+//Leer juegos proximamente
+connection.query('SELECT * FROM juegos WHERE proximamente = 1', async (error, results) => {
+    for (let i = 0; i < results.length; i++) {
+        var juego = new Juego(results[i].id, results[i].nombre, results[i].precio, results[i].id_usuario, results[i].categoria, results[i].imagen, results[i].promocion);
+        listaProximamente.push(juego);
+    }
+}) 
 
 
 //Registración 
@@ -129,7 +157,7 @@ app.post('/auth', async (req, res) => {
                 })
             } else {
                 req.session.loggedin = true;
-                usuarioActivo = req.session.user 
+                usuarioActivo = req.session.user
                 req.session.name = results[0].name
                 res.render('login', {
                     alert: true,
@@ -173,12 +201,16 @@ app.get('/', (req, res) => {
     if (req.session.loggedin) {
         res.render('index', {
             login: true,
-            name: req.session.name
+            name: req.session.name,
+            listaPromociones: listaPromociones,
+            listaDestacados: listaDestacados
         });
     } else {
         res.render('index', {
             login: false,
-            name: 'Debe iniciar sesión'
+            name: 'Debe iniciar sesión',
+            listaPromociones: listaPromociones,
+            listaDestacados: listaDestacados
         })
     }
 })
