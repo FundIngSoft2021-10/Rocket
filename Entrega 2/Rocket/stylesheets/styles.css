@@ -21,6 +21,7 @@ html{
     font-size: 16px;
     font-family: 'Playfair Display', serif;
     background-image: linear-gradient(to top, #DFE9F3 0%, var(--blanco) 100%);
+    margin: 0px;
 }
 
 header {
@@ -860,32 +861,39 @@ footer p{
 }
 
 /* NOTICIAS*/
-#principal{
-    width: 70%; 
-    height: auto; 
+#principal {
+    width: 70%;
+    height: auto;
     overflow: hidden;
-     
-    margin: 10px auto; 
+    position: relative;
+    margin-top: 10px;
+    left: 400px;
 }
 
 #publicaciones{
     width: 70%; 
     height: auto;
     overflow: hidden;
-    border: 1px solid rgb(47, 47, 148);
+    
+    padding: 5px;
     margin: 1px; 
+    border-radius: 5px;
 }
 .post{
     width: 100%; 
-    height: auto;
+    height: 350px;
     overflow: hidden;
     padding: 7px; 
     background: #fdfdfd; 
     border-left-style: solid; 
     border-left-width: 5px; 
     border-left-color: #0489B1;
+    border-right-style: solid; 
+    border-right-width: 5px; 
+    border-right-color: #0489B1;
     border-radius: 10px;
     box-shadow: 0px 0px 15px #ccc;
+    
 
 }
 
@@ -973,8 +981,12 @@ footer p{
     width: 1200px;
     height: 600px;
     position: relative;
-    top: 150px;
+    top: 120px;
     left: 310px;
+}
+.contenedojuego img{
+    width: auto;
+    height: 250px;
 }
 .descu{
     font-size: 30px;
@@ -1108,4 +1120,96 @@ footer p{
     top: -295px;
     left: -75px;
     font-size: 25px;
+}
+.boton-bus{
+    position: relative;
+    left: -135px;
+    top: -10px;
+    height: 50px;
+    background-color: var(--azul);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    text-align: center;
+    border: none;
+}
+.boton-bus:hover{
+    cursor: pointer;
+    background-color: var(--azulOscuro);
+}
+.nav-bg-jg {
+    background-color: var(--azul);
+    padding-top: 30px;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+.nav-bg-pf {
+    background-color: var(--azul);
+    padding-top: 55px;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+.nav-bg-nbs {
+    background-color: var(--azul);
+    padding-top: 80px;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+.paginaciona {
+    width: 100px;
+    height: 30px;
+    background: #0489B1;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    left: 650px;
+}
+.paginacions {
+    width: 100px;
+    height: 30px;
+    background: #0489B1;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    left: 770px;
+    top: -30px;
+}
+.paginacion{
+    margin-top: 10px;
+    width: 100%;
+    
+}
+.paginaciona:hover {
+    width: 100px;
+    height: 30px;
+    background:var(--azulOscuro);
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    left: 650px;
+    cursor: pointer;
+}
+.paginacions:hover {
+    width: 100px;
+    height: 30px;
+    background:var(--azulOscuro);
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    left: 770px;
+    top: -30px;
+    cursor: pointer;
+}
+.leer-mas{
+    background: #0489B1;
+    border-radius: 5px;
+    cursor: pointer;
 }

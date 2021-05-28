@@ -41,16 +41,19 @@ body{
 }
 
 .cards .card{
-    background: #0097a7;
-    display: flex;
-    width: 46%;
-    height: 200px;
-    align-items: center;
-    justify-content: space-evenly;
-    border-radius: 5px;
-    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.6);
-    color: #fff;
-    font-size: 20px;
+    
+        background: #0097a7;
+        display: flex;
+        width: 70%;
+        height: 200px;
+        align-items: center;
+        justify-content: space-evenly;
+        border-radius: 5px;
+        box-shadow: 0 0 6px 0 rgb(0 0 0 / 60%);
+        color: #fff;
+        font-size: 20px;
+        margin: 15px;
+    
 }
 
 .cards .card img{
