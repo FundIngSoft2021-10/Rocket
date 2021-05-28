@@ -28,36 +28,33 @@
             <h1 class="titulo">Rocket | <span class="subti">Comunidad gamer</span> </h1>
         </div>
 
-        <div class="sesion-activa">
-            <div class="nombre-usuario">
-                <Julian>
+        <% if (login) { %>
+            <div class="sesion-activa">
+                <div class="nombre-usuario"> <%= name %> </div>
+                
+                <a href="logout" class="boton boton-75 logout">Logout</a>
+            </div>
+            <div class="btn-carrito">
+                <a class="boton boton-75" href="carrito">Carrito</a>
             </div>
 
-            <a href="logout" class="boton boton-75 logout">Logout</a>
-        </div>
-        <div class="btn-carrito">
-            <a class="boton boton-75" href="carrito">Carrito</a>
-        </div>
-
-        <!-- <div class="btn-login-registro">
-            <a class="boton boton-75" href="login.html">Iniciar sesión</a>
-            <a class="boton boton-75" href="registro.html">Registrarse</a>
-        </div>
-
-        <div class="btn-carrito">
-            <a class="boton boton-75" href="carrito.html">Carrito</a>
-        </div> -->
+        <%} else { %>
+            <div class="btn-login-registro">
+                <a class="boton boton-75" href="login">Iniciar sesión</a>
+                <a class="boton boton-75" href="registro">Registrarse</a>
+            </div>
+        <% } %>
 
     </header>
 
     <div class="nav-bg">
         <nav class="navegacion contenedor">
             <!-- Menu navegacion -->
-            <a href="index.html">Home</a>
-            <a href="tienda.html">Tienda</a>
-            <a href="sobreNosotros.html">Sobre nosotros</a>
-            <a href="noticias.html">Noticias</a>
-            <a href="donación.html">Proyectos Para Donar</a>
+            <a href="/">Home</a>
+            <a href="tienda">Tienda</a>
+            <a href="sobreNosotros">Sobre nosotros</a>
+            <a href="noticias">Noticias</a>
+            <a href="donacion">Proyectos Para Donar</a>
         </nav>
     </div>
 
@@ -69,14 +66,14 @@
 
         <main class="contenedoperfil">
             <h3 class="nombreusuario2">Nombre de usuario: </h3>
-            <h3 class="nombreusuario">JuanMecanico123</h3>
+            <h3 class="nombreusuario"><%=user %></h3>
             <h3 class="nombre2">Nombre: </h3>
-            <h3 class="nombre">Juan Esteban Villa Berrio</h3>
+            <h3 class="nombre"><%=name %></h3>
             <img src="img/Iconoperf.jpg">
             <h3 class="rol">Rol: </h3>
-            <h3 class="rolusu">Consumidor</h3>
+            <h3 class="rolusu"><%=rol %></h3>
             <h3 class="email2">Email: </h3>
-            <h3 class="email">JMecanico123@gmail.com</h3>
+            <h3 class="email"><%=email %></h3>
         
         
 

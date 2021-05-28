@@ -279,6 +279,10 @@ app.post('/pago-Carrito', async (req, res) => {
     })
 })
 
+//Metodo POST /visualizar-Juego
+
+
+
 //Registración 
 app.post('/registro', async (req, res) => {
     const user = req.body.user;
@@ -335,10 +339,12 @@ app.post('/auth', async (req, res) => {
                 })
             } else {
                 req.session.loggedin = true;
-                usuarioActivo = req.session.user
+                req.session.user = results[0].user
                 req.session.name = results[0].name
                 req.session.idActual = results[0].id
-                /* console.log(req.session.idActual) */
+                req.session.rol = results[0].rol
+                req.session.email = results[0].email
+                /* console.log(req.session.user) */
                 cargarCarrito(req)
                 res.render('login', {
                     alert: true,
@@ -453,7 +459,19 @@ app.get('/carrito', (req, res) => {
         res.redirect('/')
     }
 })
-
+app.get('/perfil', (req, res) => {
+    if (req.session.loggedin) {
+        res.render('perfil', {
+            login: true,
+            name: req.session.name,
+            user: req.session.user,
+            rol: req.session.rol,
+            email: req.session.email,
+        });
+    } else {
+        res.redirect('/')
+    }
+})
 //Logout
 app.get('/logout', (req, res) => {
     req.session.destroy(() => {

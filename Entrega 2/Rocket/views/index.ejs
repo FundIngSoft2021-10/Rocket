@@ -38,7 +38,7 @@
                 <a class="boton boton-75" href="carrito">Carrito</a>
             </div>
             <div class="btn-perfil">
-                <a class="boton boton-75" href="perfil.html">Mi Perfil</a>
+                <a class="boton boton-75" href="perfil">Mi Perfil</a>
             </div>
         <%} else { %>
             <div class="btn-login-registro">
@@ -46,9 +46,6 @@
                 <a class="boton boton-75" href="registro">Registrarse</a>
             </div>
         <% } %>
-
-
-        
 
     </header>
 
@@ -118,9 +115,11 @@
             <li>
                 <% listaPromociones.forEach(function(juego) { %>
                     <a>
-                        <h3 class="titulo"><%= juego.nombre %></h3>
-                        <img src= <%= juego.imagen %> >
-                        <span id="precio" class="precio"> <%= new Intl.NumberFormat('es-CO', { style: "currency", currency: "COP" }).format(juego.precio*juego.promocion/100) %> </span>
+                        <form action="/visualizar-Juego" method="POST">
+                            <h3 class="titulo"><%= juego.nombre %></h3>
+                            <img type="submit" src= <%= juego.imagen %> >
+                            <span id="precio" class="precio"> <%= new Intl.NumberFormat('es-CO', { style: "currency", currency: "COP" }).format(juego.precio*juego.promocion/100) %> </span>
+                        </form>
                         
                     </a>
                 <% }); %>

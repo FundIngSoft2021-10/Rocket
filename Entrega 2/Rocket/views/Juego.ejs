@@ -27,42 +27,37 @@
         <div class="presentacion">
             <h1 class="titulo">Rocket | <span class="subti">Comunidad gamer</span> </h1>
         </div>
-
-        <div class="sesion-activa">
-            <div class="nombre-usuario">
-                <Julian>
+        <% if (login) { %>
+            <div class="sesion-activa">
+                <div class="nombre-usuario"> <%= name %> </div>
+                
+                <a href="logout" class="boton boton-75 logout">Logout</a>
             </div>
-
-            <a href="logout" class="boton boton-75 logout">Logout</a>
-        </div>
-        <div class="btn-carrito">
-            <a class="boton boton-75" href="carrito">Carrito</a>
-        </div>
-
-        <!-- <div class="btn-login-registro">
-            <a class="boton boton-75" href="login.html">Iniciar sesión</a>
-            <a class="boton boton-75" href="registro.html">Registrarse</a>
-        </div>
-
-        <div class="btn-carrito">
-            <a class="boton boton-75" href="carrito.html">Carrito</a>
-        </div> -->
+            <div class="btn-carrito">
+                <a class="boton boton-75" href="carrito">Carrito</a>
+            </div>
+            <div class="btn-perfil">
+                <a class="boton boton-75" href="perfil">Mi Perfil</a>
+            </div>
+        <%} else { %>
+            <div class="btn-login-registro">
+                <a class="boton boton-75" href="login">Iniciar sesión</a>
+                <a class="boton boton-75" href="registro">Registrarse</a>
+            </div>
+        <% } %>
 
     </header>
 
     <div class="nav-bg">
         <nav class="navegacion contenedor">
             <!-- Menu navegacion -->
-            <a href="index.html">Home</a>
-            <a href="tienda.html">Tienda</a>
-            <a href="sobreNosotros.html">Sobre nosotros</a>
-            <a href="noticias.html">Noticias</a>
-            <a href="donación.html">Proyectos Para Donar</a>
+            <a href="/">Home</a>
+            <a href="tienda">Tienda</a>
+            <a href="sobreNosotros">Sobre nosotros</a>
+            <a href="noticias">Noticias</a>
+            <a href="donacion">Proyectos Para Donar</a>
         </nav>
     </div>
-
-
-
 
 
     <div class="todojuego">
