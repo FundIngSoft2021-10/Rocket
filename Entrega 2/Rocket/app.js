@@ -13,9 +13,13 @@ listaDestacados = new Array();
 listaProximamente = new Array();
 listaRecomendados = new Array();
 listaPorDebajo20k = new Array();
-listaCarrito = new Array();
 listaCarritoActual = new Array();
 totalCarritoActual = 0;
+
+export const isNull = () => null;
+export const arrJuegos = () => listaJuegos;
+export const arrUsuarios = () => listaUsuarios;
+
 
 /* var juego5 = new Juego(5, 'Fifa 2021', 86000, 'ea', 'Deportes', 'img/fifa.jpeg');
 var juego6 = new Juego(6, 'Among Us', 10000, 'incognito', 'Casual', 'img/among.jpeg');
@@ -86,7 +90,7 @@ app.get('/registro', (req, res) => {
 //Leer juegos en promocion
 connection.query('SELECT * FROM juegos WHERE promocion > 0', async (error, results) => {
     for (let i = 0; i < results.length; i++) {
-        var juego = new Juego(results[i].id, results[i].nombre, results[i].precio, results[i].id_usuario, results[i].categoria, results[i].imagen, results[i].promocion);
+        var juego = new Juego(results[i].id, results[i].nombre, results[i].precio, results[i].id_usuario, results[i].categoria, results[i].imagen, results[i].promocion, results[i].destacado, results[i].proximamente, results[i].recomendado, results[i].progreso);
         listaPromociones.push(juego);
     }
 })
@@ -94,7 +98,7 @@ connection.query('SELECT * FROM juegos WHERE promocion > 0', async (error, resul
 //Leer juegos destacados
 connection.query('SELECT * FROM juegos WHERE destacado = 1', async (error, results) => {
     for (let i = 0; i < results.length; i++) {
-        var juego = new Juego(results[i].id, results[i].nombre, results[i].precio, results[i].id_usuario, results[i].categoria, results[i].imagen, results[i].promocion);
+        var juego = new Juego(results[i].id, results[i].nombre, results[i].precio, results[i].id_usuario, results[i].categoria, results[i].imagen, results[i].promocion, results[i].destacado, results[i].proximamente, results[i].recomendado, results[i].progreso);
         listaDestacados.push(juego);
     }
 })
@@ -102,7 +106,7 @@ connection.query('SELECT * FROM juegos WHERE destacado = 1', async (error, resul
 //Leer juegos destacados
 connection.query('SELECT * FROM juegos WHERE recomendado = 1', async (error, results) => {
     for (let i = 0; i < results.length; i++) {
-        var juego = new Juego(results[i].id, results[i].nombre, results[i].precio, results[i].id_usuario, results[i].categoria, results[i].imagen, results[i].promocion);
+        var juego = new Juego(results[i].id, results[i].nombre, results[i].precio, results[i].id_usuario, results[i].categoria, results[i].imagen, results[i].promocion, results[i].destacado, results[i].proximamente, results[i].recomendado, results[i].progreso);
         listaRecomendados.push(juego);
     }
 })
@@ -110,7 +114,7 @@ connection.query('SELECT * FROM juegos WHERE recomendado = 1', async (error, res
 //Leer juegos proximamente
 connection.query('SELECT * FROM juegos WHERE proximamente = 1', async (error, results) => {
     for (let i = 0; i < results.length; i++) {
-        var juego = new Juego(results[i].id, results[i].nombre, results[i].precio, results[i].id_usuario, results[i].categoria, results[i].imagen, results[i].promocion);
+        var juego = new Juego(results[i].id, results[i].nombre, results[i].precio, results[i].id_usuario, results[i].categoria, results[i].imagen, results[i].promocion, results[i].destacado, results[i].proximamente, results[i].recomendado, results[i].progreso);
         listaProximamente.push(juego);
     }
 })
@@ -118,7 +122,7 @@ connection.query('SELECT * FROM juegos WHERE proximamente = 1', async (error, re
 //Leer juegos por debajo de 20k
 connection.query('SELECT * FROM juegos WHERE precio < 20000', async (error, results) => {
     for (let i = 0; i < results.length; i++) {
-        var juego = new Juego(results[i].id, results[i].nombre, results[i].precio, results[i].id_usuario, results[i].categoria, results[i].imagen, results[i].promocion);
+        var juego = new Juego(results[i].id, results[i].nombre, results[i].precio, results[i].id_usuario, results[i].categoria, results[i].imagen, results[i].promocion, results[i].destacado, results[i].proximamente, results[i].recomendado, results[i].progreso);
         listaPorDebajo20k.push(juego);
     }
 })
@@ -305,15 +309,35 @@ app.post('/buscar-Juego', async (req, res) => {
     const {busqueda} = req.body;
     connection.query('SELECT * FROM juegos WHERE nombre = ?', [busqueda], async (error, results) => {
         if(results.length == 0){
-            res.render('tienda', {
-                alert: true,
-                alertTitle: "Error",
-                alertMessage: "No se han encontrado coincidencias",
-                alertIcon: "error",
-                showConfirmButton: false,
-                timer: 1500,
-                ruta: 'tienda'
-            })
+            if (req.session.loggedin) {
+                res.render('tienda', {
+                    login: true,
+                    name: req.session.name,
+                    listaRecomendados: listaRecomendados,
+                    listaPorDebajo20k: listaPorDebajo20k,
+                    alert: true,
+                    alertTitle: "Error",
+                    alertMessage: "No se han encontrado coincidencias",
+                    alertIcon: "error",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    ruta: 'tienda'
+                });
+            } else {
+                res.render('tienda', {
+                    login: false,
+                    name: 'Debe iniciar sesión',
+                    listaRecomendados: listaRecomendados,
+                    listaPorDebajo20k: listaPorDebajo20k,
+                    alert: true,
+                    alertTitle: "Error",
+                    alertMessage: "No se han encontrado coincidencias",
+                    alertIcon: "error",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    ruta: 'tienda'
+                })
+            }
         }
         else{
             juegoVisualizar = results[0]
@@ -337,7 +361,6 @@ app.post('/buscar-Juego', async (req, res) => {
 //Metodo POST /agregar-Juego
 app.post('/agregar-Juego', async (req, res) => {
     const {idJuego} = req.body;
-    console.log(idJuego)
     connection.query('INSERT INTO usersxjuegos(id_usuario, id_juego) VALUES (?,?)', [req.session.idActual, idJuego], async (error, results) => {
         if (error)
             return console.error(error.message);
@@ -355,6 +378,25 @@ app.post('/agregar-Juego', async (req, res) => {
         login: true,
         name: req.session.name,
     })
+})
+
+//Metodo POST /donar-Juego
+app.post('/donar-Juego', async (req, res) => {
+    const {idJuego} = req.body;
+    connection.query('SELECT * FROM juegos WHERE id = ?', [idJuego], async (error, results) => {
+        juego = results[0] ;
+        if (req.session.loggedin) {
+            res.render('pago', {
+                login: true,
+                name: req.session.name,
+                juego: juego,
+                listaCarritoActual: listaCarritoActual,
+                totalCarritoActual: totalCarritoActual
+            });
+        } else {
+            res.redirect('/')
+        }
+    });
 })
 
 //Registración 
@@ -509,12 +551,14 @@ app.get('/donacion', (req, res) => {
     if (req.session.loggedin) {
         res.render('donacion', {
             login: true,
-            name: req.session.name
+            name: req.session.name,
+            listaProximamente: listaProximamente
         });
     } else {
         res.render('donacion', {
             login: false,
-            name: 'Debe iniciar sesión'
+            name: 'Debe iniciar sesión',
+            listaProximamente: listaProximamente
         })
     }
 })
