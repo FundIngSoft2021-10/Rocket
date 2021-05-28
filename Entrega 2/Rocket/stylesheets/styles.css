@@ -294,6 +294,15 @@ h1,h2,h3{
 .ofertas li a img {
     object-fit: contain;
     width:100%;
+    cursor: pointer;
+}
+.inputImagen{
+    object-fit: contain;
+    width:100%;
+    cursor: pointer;
+}
+.inputImagenCarrusel{
+    width: 100%;
 }
 footer div{
     text-align: center;
@@ -1005,6 +1014,7 @@ footer p{
     background:#0489B1;
     border-radius: 5px;
     text-align: center;
+    cursor: pointer;
 }
 .btn-añadir:hover{
     width: 200px;

@@ -74,13 +74,16 @@
 
     <main class="contenedor-tienda">
 
-
-        <div class="box ">
-            <div class="container-1">
-                <span class="icon"><i class="fa fa-search"></i></span>
-                <input type="search" id="search" placeholder="Buscar..." />
+        <form action="/buscar-Juego" method="POST">
+            <div class="box ">
+                <div class="container-1">
+                    <span class="icon"><i class="fa fa-search"></i></span>
+                    <input type="search" id="search" name="busqueda" placeholder="Buscar..." />
+                    <button id="boton-buscar" type="submit" class="boton boton-75">Buscar</button>
+                </div>
             </div>
-        </div>
+        </form>
+        
 
         <video class="video" width="1200" height="400" autoplay>
             <source src="videos/intro.mp4" type="video/mp4">
@@ -95,7 +98,11 @@
                         <% listaRecomendados.forEach(function(juego) { %>
                             <a>
                                 <h3 class="titulo"><%= juego.nombre %></h3>
-                                <img src= <%= juego.imagen %> >
+                                <form action="/visualizar-Juego" method="POST">
+                                    <input type="hidden" id="id" name="idJuego" value="<%= juego.id %>">
+                                    <input class="inputImagen" type="image" name="submit" src= <%= juego.imagen %> >
+                                </form>
+                                <!-- <img src= juego.imagen  > -->
                                 <span id="precio" class="precio"> <%= new Intl.NumberFormat('es-CO', { style: "currency", currency: "COP" }).format(juego.precio) %> </span>
                             </a>
                         <% }); %>

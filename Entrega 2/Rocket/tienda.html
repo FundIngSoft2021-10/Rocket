@@ -61,14 +61,15 @@
     </section>
 
     <main class="contenedor-tienda">
-
-
-        <div class="box ">
-            <div class="container-1">
-                <span class="icon"><i class="fa fa-search"></i></span>
-                <input type="search" id="search" placeholder="Buscar..." />
+        <form action="/buscar-Juego" method="POST">
+            <div class="box ">
+                <div class="container-1">
+                    <span class="icon"><i class="fa fa-search"></i></span>
+                    <input type="search" id="search" name="busqueda" placeholder="Buscar..." />
+                    <button id="boton-buscar" type="submit" class="boton">Buscar</button>
+                </div>
             </div>
-        </div>
+        </form>
 
         <video class="video" width="1200" height="400" autoplay>
             <source src="videos/intro.mp4" type="video/mp4">

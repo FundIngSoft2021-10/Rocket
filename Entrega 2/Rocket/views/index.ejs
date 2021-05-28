@@ -99,14 +99,15 @@
         <section class="ofertas">
             <h2 class="titulo">Promociones</h2>
             <li>
-                <% listaPromociones.forEach(function(juego) { %>
+                <% listaPromociones.forEach(function(juegoActual) { %>
                     <a>
+                        <h3 class="titulo"><%= juegoActual.nombre %></h3>
                         <form action="/visualizar-Juego" method="POST">
-                            <h3 class="titulo"><%= juego.nombre %></h3>
-                            <img type="submit" src= <%= juego.imagen %> >
-                            <span id="precio" class="precio"> <%= new Intl.NumberFormat('es-CO', { style: "currency", currency: "COP" }).format(juego.precio*juego.promocion/100) %> </span>
+                            <input type="hidden" id="id" name="idJuego" value="<%= juegoActual.id %>">
+                            <input class="inputImagen" type="image" name="submit" src= <%= juegoActual.imagen %> >
+                            <!-- <img alt="submit" src=  juego.imagen > -->
                         </form>
-                        
+                        <span id="precio" class="precio"> <%= new Intl.NumberFormat('es-CO', { style: "currency", currency: "COP" }).format(juegoActual.precio*juegoActual.promocion/100) %> </span>
                     </a>
                 <% }); %>
             </li>
@@ -120,7 +121,11 @@
                     <% for(let i = 0; i < listaDestacados.length; i++){ %>
                         <li id="slide<%= i%>">
                             <!-- <h3>slide<%= i%></h3> -->
-                            <img src="<%= listaDestacados[i].imagen%>" />
+                            <form action="/visualizar-Juego" method="POST">
+                                <input type="hidden" id="id" name="idJuego" value="<%= listaDestacados[i].id %>">
+                                <input class="inputImagenCarrusel" type="image" name="submit" src= <%= listaDestacados[i].imagen %> >
+                            </form>
+                            <!-- <img src="<%= listaDestacados[i].imagen%>" /> -->
                         </li>
                     <% } %>
                 </ul>
@@ -130,10 +135,14 @@
         <section class="ofertas">
             <h2 class="titulo">Proximamente</h2>
             <li>
-                <% listaProximamente.forEach(function(juego) { %>
+                <% listaProximamente.forEach(function(juegoActual) { %>
                     <a>
-                        <h3 class="titulo"><%= juego.nombre %></h3>
-                        <img src= <%= juego.imagen %> >
+                        <h3 class="titulo"><%= juegoActual.nombre %></h3>
+                        <form action="/visualizar-Juego" method="POST">
+                            <input type="hidden" id="id" name="idJuego" value="<%= juegoActual.id %>">
+                            <input class="inputImagen" type="image" name="submit" src= <%= juegoActual.imagen %> >
+                        </form>
+                        <!-- <img src= <%= juegoActual.imagen %> > -->
                         <span id="precio" class="precio">PROXIMAMENTE</span>
                     </a>
                 <% }); %>
