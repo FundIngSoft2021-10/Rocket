@@ -17,6 +17,11 @@ listaCarrito = new Array();
 listaCarritoActual = new Array();
 totalCarritoActual = 0;
 
+export const isNull = () => null;
+export const arrJuegos = () => listaJuegos;
+export const arrUsuarios = () => listaUsuarios;
+
+
 /* var juego5 = new Juego(5, 'Fifa 2021', 86000, 'ea', 'Deportes', 'img/fifa.jpeg');
 var juego6 = new Juego(6, 'Among Us', 10000, 'incognito', 'Casual', 'img/among.jpeg');
 var juego7 = new Juego(7, 'Minecraft', 105000, 'Microsoft', 'Casual', 'img/minecraft.jpg');
