@@ -68,18 +68,22 @@
     <div class="todojuego">
 
         <main class="contenedojuego">
-            <h3 class="titulojuego">Fifa 2021</h3>
-            <h3 class="descripcion">FIFA 21 es un videojuego de fútbol del año 2020 disponible para Microsoft Windows, PlayStation 4, Xbox One y Nintendo Switch el 9 de octubre de 2020, y también es el primer videojuego de la serie FIFA para PlayStation 5 y Xbox Series X|S. El juego es la 28.ª entrega de la serie de videojuegos de FIFA.</h3>
+            <h3 class="titulojuego">Fifa 21</h3>
+            <h3 class="descripcion">Este es un videojuego de fútbol del año 2020 disponible para Microsoft Windows, PlayStation 4, Xbox One y Nintendo Switch el 9 de octubre de 2020, y también es el primer videojuego de la serie FIFA para PlayStation 5 y Xbox Series X|S. El juego es la 28.ª entrega de la serie de videojuegos de FIFA.</h3>
             
-            <img src="img/fifa.jpeg">
-            <h3 class="cat">Categoria: </h3>
-            <h3 class="catjuego">Deportes</h3>
-            <span class="preciojuego">$ 86.000 -</span>
-            <span class="descu">30% Dcto</span>
-            <button class="btn-añadir">
-                <a class="">Añadir al carrito</a>
-            </button>
+            <img src="img/wargroove.jpg">
+            <h3 class="cat">Categoria: Deportes</h3>
+            <!-- <h3 class="catjuego"><%= juego.categoria %></h3> -->
+            <span class="preciojuego">150000 -</span>
+            <span class="descu">15%</span>
+            <form action="/agregar-Juego" method="POST">
+                <input type="hidden" id="id" name="idJuego" value="1">
+                <!-- <div class="btn-añadir">
+                    <a type="submit" class="">Añadir al carrito</a>
+                </div> -->
+            <button id="boton-agregar-juego" type="submit" class="btn-añadir">Añadir al carrito</button>
 
+            </form>
         </main>
     </div>
 
