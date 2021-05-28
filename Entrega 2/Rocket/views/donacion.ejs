@@ -98,7 +98,19 @@
                 <section class="ofertas">
                     <h2 class="titulo">Proyectos en tendencia</h2>
                     <li>
+                    <% listaProximamente.forEach(function(juego) { %>
                         <a>
+                            <h3 class="titulo"><%= juego.nombre %></h3>
+                            <form action="/visualizar-Juego" method="POST">
+                                <input type="hidden" id="id" name="idJuego" value="<%= juego.id %>">
+                                <input class="inputImagen" type="image" name="submit" src= <%= juego.imagen %> >
+                            </form>
+                            <span class="precio" ><%= juego.progreso %>% Progreso</span>
+                        </a>
+                    <% }); %>
+                </li>
+                    
+                        <!-- <a>
                             <h3 class="titulo" >Blasphemous 2</h3>
                             <img src="img/blasphemous.jpg">
                             <span class="precio" >30% Progreso</span>
@@ -112,8 +124,8 @@
                             <h3 class="titulo" >Undertale</h3>
                             <img src="img/undertale.jpg">
                             <span class="precio" >15% Progreso</span>
-                        </a>
-                    </li>
+                        </a> -->
+                    
         
                 </section>
         

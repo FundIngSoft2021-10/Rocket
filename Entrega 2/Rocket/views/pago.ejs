@@ -27,73 +27,67 @@
         <div class="presentacion">
             <h1 class="titulo">Rocket | <span class="subti">Comunidad gamer</span> </h1>
         </div>
-        <% if (login) { %>
-            <div class="sesion-activa">
-                <div class="nombre-usuario"> <%= name %> </div>
-                
-                <a href="logout" class="boton boton-75 logout">Logout</a>
+
+        <div class="sesion-activa">
+            <div class="nombre-usuario">
+                <Julian>
             </div>
-            <div class="btn-carrito">
-                <a class="boton boton-75" href="carrito">Carrito</a>
-            </div>
-            <div class="btn-perfil">
-                <a class="boton boton-75" href="perfil">Mi Perfil</a>
-            </div>
-        <%} else { %>
-            <div class="btn-login-registro">
-                <a class="boton boton-75" href="login">Iniciar sesión</a>
-                <a class="boton boton-75" href="registro">Registrarse</a>
-            </div>
-        <% } %>
+
+            <a href="logout" class="boton boton-75 logout">Logout</a>
+        </div>
+        <div class="btn-carrito">
+            <a class="boton boton-75" href="carrito">Carrito</a>
+        </div>
+
+        <!-- <div class="btn-login-registro">
+            <a class="boton boton-75" href="login.html">Iniciar sesión</a>
+            <a class="boton boton-75" href="registro.html">Registrarse</a>
+        </div>
+
+        <div class="btn-carrito">
+            <a class="boton boton-75" href="carrito.html">Carrito</a>
+        </div> -->
 
     </header>
 
-    <div class="nav-bg-jg">
+    <div class="nav-bg">
         <nav class="navegacion contenedor">
             <!-- Menu navegacion -->
-            <a href="/">Home</a>
-            <a href="tienda">Tienda</a>
-            <a href="sobreNosotros">Sobre nosotros</a>
-            <a href="noticias">Noticias</a>
-            <a href="donacion">Proyectos Para Donar</a>
+            <a href="index.html">Home</a>
+            <a href="tienda.html">Tienda</a>
+            <a href="sobreNosotros.html">Sobre nosotros</a>
+            <a href="noticias.html">Noticias</a>
+            <a href="donación.html">Proyectos Para Donar</a>
         </nav>
     </div>
 
 
-    <div class="todojuego">
 
-        <main class="contenedojuego">
-            <h3 class="titulojuego"><%= juego.nombre %></h3>
-            <h3 class="descripcion">Este es un videojuego de fútbol del año 2020 disponible para Microsoft Windows, PlayStation 4, Xbox One y Nintendo Switch el 9 de octubre de 2020, y también es el primer videojuego de la serie FIFA para PlayStation 5 y Xbox Series X|S. El juego es la 28.ª entrega de la serie de videojuegos de FIFA.</h3>
-            
-            <img src="<%= juego.imagen %>">
-            <h3 class="cat">Categoria:  <%= juego.categoria %></h3>
-            <!-- <h3 class="catjuego"><%= juego.categoria %></h3> -->
-            <% if(juego.proximamente == 0) { %>
-                <span class="preciojuego"><%= new Intl.NumberFormat('es-CO', { style: "currency", currency: "COP" }).format(juego.precio) %> -</span>
-                <span class="descu"><%= juego.promocion %>%</span>
-            <% } else { %>
-                <span class="preciojuego">PROXIMAMENTE</span>
-                <span class="progreso">Progreso <%= juego.progreso %>%</span>
-            <% } %>            
-            
-            <% if (login && !juego.proximamente) { %>
-                <form action="/agregar-Juego" method="POST">
-                    <input type="hidden" id="id" name="idJuego" value="<%= juego.id %>">
-                    <button id="boton-agregar-juego" type="submit" class="btn-añadir">Añadir al carrito</button>
-                </form>
-            <% } else if (login && juego.proximamente) { %>
-                <form action="/donar-Juego" method="POST">
-                    <input type="hidden" id="id" name="idJuego" value="<%= juego.id %>">
-                    <button id="boton-agregar-juego" type="submit" class="btn-añadir">Donar</button>
-                </form>
-            <% } %>
-            </form>
-        </main>
+
+
+    <div class="todopago">
+
+        <div class="contenedopago">
+            <h2 class="pagometod">Pago con Tarjeta </h3>
+            <h3 class="tarjeta">N° Tarjeta: </h3>
+            <input type="text" class="Numtarjeta" name="Numtarjeta" placeholder="xxxxxxxxxxxxx">
+            <i class="far fa-credit-card"></i>
+            <h3 class="cad">Caducidad: </h3>
+            <input type="text" class="mes" name="mes">
+            <input type="text" class=""año"" name="año">
+            <h3 class="cvv">Codigo de Seguridad: </h3>
+            <input type="text" class="cvv" name="cvv">
+            <button class="cancelar">Cancelar</button>
+            <button class="pagar">Pagar</button>
+           
+        
+        
+
+        </div>
     </div>
 
 
-    <footer>
+    <footer class = "footpago">
 
 
         <section class="contenedor">
@@ -127,7 +121,7 @@
 
 
 
-            <section class="contenedor">
+            <section class="redes">
 
                 <p>Copyright © Todos los derechos reservados Rocket 2020 </p>
             </section>
@@ -137,7 +131,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/Entrega 2/Rocket/js/jquery.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
     <% if(typeof alert != "undefined") { %>
         <script>
             Swal.fire({

@@ -96,7 +96,7 @@
                 <section class="ofertas2">
                     <li>
                         <% listaRecomendados.forEach(function(juego) { %>
-                            <a href="Juego.html">
+                            <a>
                                 <h3 class="titulo"><%= juego.nombre %></h3>
                                 <form action="/visualizar-Juego" method="POST">
                                     <input type="hidden" id="id" name="idJuego" value="<%= juego.id %>">
@@ -104,7 +104,7 @@
                                 </form>
                                 <!-- <img src= juego.imagen  > -->
                                 <span id="precio" class="precio"> <%= new Intl.NumberFormat('es-CO', { style: "currency", currency: "COP" }).format(juego.precio) %> </span>
-                            </a href="Juego.html">
+                            </a>
                         <% }); %>
                     </li>
 
@@ -221,6 +221,22 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/Entrega 2/Rocket/js/jquery.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <% if(typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %> ,
+                timer: <%= timer %>
+            }).then(()=>{
+                window.location='/<%= ruta %>'
+            })
+        </script>
+    <% } %>
 </body>
 
 </html>
