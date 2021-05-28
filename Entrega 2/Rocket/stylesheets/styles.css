@@ -967,6 +967,10 @@ footer p{
     top: 150px;
     left: 310px;
 }
+.contenedojuego img{
+    width: auto;
+    height: 250px;
+}
 .descu{
     font-size: 30px;
     position: relative;
