@@ -973,7 +973,7 @@ footer p{
 .preciojuego{
     font-size: 30px;
     position: relative;
-    top: -300px;
+    top: -250px;
     left: 800px;
     margin-right: 1.5rem;
 }
@@ -991,7 +991,7 @@ footer p{
 .descu{
     font-size: 30px;
     position: relative;
-    top: -300px;
+    top: -250px;
     left: 800px;
     margin-right: 1.5rem;
 }
