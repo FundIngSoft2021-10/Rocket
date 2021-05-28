@@ -977,6 +977,13 @@ footer p{
     left: 800px;
     margin-right: 1.5rem;
 }
+.progreso{
+    font-size: 30px;
+    position: relative;
+    top: -200px;
+    left: 600px;
+    margin-right: 1.5rem;
+}
 .todojuego {
     width: 1200px;
     height: 600px;
