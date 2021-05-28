@@ -65,7 +65,7 @@ h1,h2,h3{
     margin-bottom: 0;
     position:relative;
    left: 300px;
-   top: -65px;
+   top: -5px;
 
 }
 .contenedor-donacion{
@@ -934,6 +934,86 @@ footer p{
 
 }
 
-#publicaciones .enlace-paginacion : hover{
+#publicaciones .enlace-paginacion :hover{
     text-decoration: underline;
+}
+
+.titulojuego{
+    font-size: 50px;
+    position: relative;
+    top: 20px;
+    text-align: left;
+}
+.descripcion{
+    width: 400px;
+    font-size: 15px;
+    text-align: right;
+    position: relative;
+    left: 700px;
+    margin-right: 1.5rem;
+}
+
+.preciojuego{
+    font-size: 30px;
+    position: relative;
+    top: -300px;
+    left: 800px;
+    margin-right: 1.5rem;
+}
+.todojuego {
+    width: 1200px;
+    height: 600px;
+    position: relative;
+    top: 150px;
+    left: 310px;
+}
+.descu{
+    font-size: 30px;
+    position: relative;
+    top: -300px;
+    left: 800px;
+    margin-right: 1.5rem;
+}
+.todojuego img{
+    position: relative;
+    top: -120px;
+}
+.cat{
+    font-size: 15px;
+    position: relative;
+    top: -250px;
+    left: 300px;
+    margin-right: 1.5rem;
+}
+.catjuego{
+    font-size: 15px;
+    position: relative;
+    top: -282px;
+    left: 370px;
+    margin-right: 1.5rem;
+}
+.btn-añadir{
+    width: 200px;
+    height: 50px;
+    position: relative;
+    top: -250px;
+    left: 900px;
+    background:#0489B1;
+    border-radius: 5px;
+    text-align: center;
+}
+.btn-añadir:hover{
+    width: 200px;
+    height: 50px;
+    position: relative;
+    top: -250px;
+    left: 900px;
+    background:#095580;
+    border-radius: 5px;
+    text-align: center;
+}
+.btn-añadir a{
+    position: relative;
+    top:10px;
+    font-size: 20px;
 }
