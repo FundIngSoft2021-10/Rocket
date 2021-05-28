@@ -1,5 +1,5 @@
 class Juego {
-    constructor(id, nombre, precio, autor, categoria, imagen, promocion) {
+    constructor(id, nombre, precio, autor, categoria, imagen, promocion, destacado, proximamente, recomendado, progreso) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
@@ -7,6 +7,10 @@ class Juego {
         this.categoria = categoria;
         this.imagen = imagen;
         this.promocion = promocion;
+        this.destacado = destacado;
+        this.proximamente = proximamente;
+        this.recomendado = recomendado;
+        this.progreso = progreso;
     }
 };
 

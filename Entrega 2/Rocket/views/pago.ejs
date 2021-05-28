@@ -50,7 +50,7 @@
 
     </header>
 
-    <div class="nav-bg-jg">
+    <div class="nav-bg">
         <nav class="navegacion contenedor">
             <!-- Menu navegacion -->
             <a href="index.html">Home</a>
@@ -65,30 +65,29 @@
 
 
 
-    <div class="todojuego">
+    <div class="todopago">
 
-        <main class="contenedojuego">
-            <h3 class="titulojuego">Fifa 21</h3>
-            <h3 class="descripcion">Este es un videojuego de fútbol del año 2020 disponible para Microsoft Windows, PlayStation 4, Xbox One y Nintendo Switch el 9 de octubre de 2020, y también es el primer videojuego de la serie FIFA para PlayStation 5 y Xbox Series X|S. El juego es la 28.ª entrega de la serie de videojuegos de FIFA.</h3>
-            
-            <img src="img/wargroove.jpg">
-            <h3 class="cat">Categoria: Deportes</h3>
-            <!-- <h3 class="catjuego"><%= juego.categoria %></h3> -->
-            <span class="preciojuego">150000 -</span>
-            <span class="descu">15%</span>
-            <form action="/agregar-Juego" method="POST">
-                <input type="hidden" id="id" name="idJuego" value="1">
-                <!-- <div class="btn-añadir">
-                    <a type="submit" class="">Añadir al carrito</a>
-                </div> -->
-            <button id="boton-agregar-juego" type="submit" class="btn-añadir">Añadir al carrito</button>
+        <div class="contenedopago">
+            <h2 class="pagometod">Pago con Tarjeta </h3>
+            <h3 class="tarjeta">N° Tarjeta: </h3>
+            <input type="text" class="Numtarjeta" name="Numtarjeta" placeholder="xxxxxxxxxxxxx">
+            <i class="far fa-credit-card"></i>
+            <h3 class="cad">Caducidad: </h3>
+            <input type="text" class="mes" name="mes">
+            <input type="text" class=""año"" name="año">
+            <h3 class="cvv">Codigo de Seguridad: </h3>
+            <input type="text" class="cvv" name="cvv">
+            <button class="cancelar">Cancelar</button>
+            <button class="pagar">Pagar</button>
+           
+        
+        
 
-            </form>
-        </main>
+        </div>
     </div>
 
 
-    <footer>
+    <footer class = "footpago">
 
 
         <section class="contenedor">
@@ -122,7 +121,7 @@
 
 
 
-            <section class="contenedor">
+            <section class="redes">
 
                 <p>Copyright © Todos los derechos reservados Rocket 2020 </p>
             </section>
@@ -131,7 +130,20 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/Entrega 2/Rocket/js/jquery.js"></script>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <% if(typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %> ,
+                timer: <%= timer %>
+            }).then(()=>{
+                window.location='/<%= ruta %>'
+            })
+        </script>
+    <% } %>
 </body>
 
 </html>
