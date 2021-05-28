@@ -11,6 +11,11 @@ listaJuegos = new Array();
 listaPromociones = new Array();
 listaDestacados = new Array();
 listaProximamente = new Array();
+listaRecomendados = new Array();
+listaPorDebajo20k = new Array();
+listaCarrito = new Array();
+listaCarritoActual = new Array();
+totalCarritoActual = 0;
 
 /* var juego5 = new Juego(5, 'Fifa 2021', 86000, 'ea', 'Deportes', 'img/fifa.jpeg');
 var juego6 = new Juego(6, 'Among Us', 10000, 'incognito', 'Casual', 'img/among.jpeg');
@@ -42,7 +47,6 @@ app.use('/img', express.static('img'));
 app.use('/img', express.static(__dirname + 'img'));
 app.use('/js', express.static(__dirname + '/js'));
 app.use('/videos', express.static(__dirname + '/videos'));
-
 
 //Establecemos el motor de plantillas ejs
 app.set('view engine', 'ejs');
@@ -93,7 +97,15 @@ connection.query('SELECT * FROM juegos WHERE destacado = 1', async (error, resul
         var juego = new Juego(results[i].id, results[i].nombre, results[i].precio, results[i].id_usuario, results[i].categoria, results[i].imagen, results[i].promocion);
         listaDestacados.push(juego);
     }
-}) 
+})
+
+//Leer juegos destacados
+connection.query('SELECT * FROM juegos WHERE recomendado = 1', async (error, results) => {
+    for (let i = 0; i < results.length; i++) {
+        var juego = new Juego(results[i].id, results[i].nombre, results[i].precio, results[i].id_usuario, results[i].categoria, results[i].imagen, results[i].promocion);
+        listaRecomendados.push(juego);
+    }
+})
 
 //Leer juegos proximamente
 connection.query('SELECT * FROM juegos WHERE proximamente = 1', async (error, results) => {
@@ -101,7 +113,15 @@ connection.query('SELECT * FROM juegos WHERE proximamente = 1', async (error, re
         var juego = new Juego(results[i].id, results[i].nombre, results[i].precio, results[i].id_usuario, results[i].categoria, results[i].imagen, results[i].promocion);
         listaProximamente.push(juego);
     }
-}) 
+})
+
+//Leer juegos por debajo de 20k
+connection.query('SELECT * FROM juegos WHERE precio < 20000', async (error, results) => {
+    for (let i = 0; i < results.length; i++) {
+        var juego = new Juego(results[i].id, results[i].nombre, results[i].precio, results[i].id_usuario, results[i].categoria, results[i].imagen, results[i].promocion);
+        listaPorDebajo20k.push(juego);
+    }
+})
 
 //Metodo POST /send-email con nodemailer
 const nodemailer = require('nodemailer');
@@ -173,6 +193,91 @@ app.post('/send-email', async (req, res) => {
     }
 });
 
+//Funcion cargar carrito
+function cargarCarrito(req) {
+    listaCarritoActual.length = 0;
+    totalCarritoActual = 0;
+    connection.query('SELECT * FROM usersxjuegos WHERE id_usuario = ?', [req.session.idActual], async (error, results) => {
+        for (let i = 0; i < results.length; i++) {
+            connection.query('SELECT * FROM juegos WHERE id = ?', [results[i].id_juego], async (error, results) => {
+                //Arroja solo un resultado ya que el id es unico en las tablas
+                var juego = new Juego(results[0].id, results[0].nombre, results[0].precio, results[0].id_usuario, results[0].categoria, results[0].imagen, results[0].promocion);
+                listaCarritoActual.push(juego);
+                totalCarritoActual += juego.precio;
+            });
+        }
+    })
+}
+
+//Metodo POST /eliminar-Juego 
+app.post('/eliminar-Juego', async (req, res) => {
+    const { idJuego } = req.body;
+    connection.query('DELETE FROM usersxjuegos WHERE id_usuario = ? AND id_juego = ?', [req.session.idActual, idJuego], async (error, results) => {
+        if (error)
+            return console.error(error.message);
+        console.log('Deleted Row(s):', results.affectedRows);
+        cargarCarrito(req);
+        if (req.session.loggedin) {
+            res.redirect('/carrito')
+        } else {
+            res.redirect('/')
+        }
+    })
+})
+
+//Metodo POST /vaciar-Carrito
+app.post('/vaciar-Carrito', async (req, res) => {
+    connection.query('SELECT * FROM usersxjuegos WHERE id_usuario = ?', [req.session.idActual], async (error, results) => {
+        /* console.log(results)
+        console.log(req.session.idActual)
+        console.log() */
+        for (let i = 0; i < results.length; i++) {
+            connection.query('DELETE FROM usersxjuegos WHERE id_usuario = ? AND id_juego = ?', [req.session.idActual, results[i].id_juego], async (error, results) => {
+                if (error)
+                    return console.error(error.message);
+                console.log('Deleted Row(s):', results.affectedRows);
+                cargarCarrito(req);
+                if (req.session.loggedin) {
+                    res.redirect('/carrito')
+                } else {
+                    res.redirect('/')
+                }
+            });
+        }
+    })
+})
+
+//Metodo POST /pago-Carrito
+app.post('/pago-Carrito', async (req, res) => {
+    //TODO falta agregar a una base de datos de compras!!!!!!!!
+    connection.query('SELECT * FROM usersxjuegos WHERE id_usuario = ?', [req.session.idActual], async (error, results) => {
+        /* console.log(results)
+        console.log(req.session.idActual)
+        console.log() */
+        for (let i = 0; i < results.length; i++) {
+            connection.query('DELETE FROM usersxjuegos WHERE id_usuario = ? AND id_juego = ?', [req.session.idActual, results[i].id_juego], async (error, results) => {
+                if (error)
+                    return console.error(error.message);
+                console.log('Deleted Row(s):', results.affectedRows);
+            });
+        }
+        cargarCarrito(req);
+    });
+    res.render('carrito', {
+        alert: true,
+        alertTitle: "Pago exitoso",
+        alertMessage: "¡PAGO REALIZADO!",
+        alertIcon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+        ruta: 'carrito',
+        login: true,
+        name: req.session.name,
+        listaJuegos: listaJuegos,
+        listaCarrito: listaCarrito,
+        listaCarritoActual: listaCarritoActual,
+    })
+})
 
 //Registración 
 app.post('/registro', async (req, res) => {
@@ -232,6 +337,9 @@ app.post('/auth', async (req, res) => {
                 req.session.loggedin = true;
                 usuarioActivo = req.session.user
                 req.session.name = results[0].name
+                req.session.idActual = results[0].id
+                /* console.log(req.session.idActual) */
+                cargarCarrito(req)
                 res.render('login', {
                     alert: true,
                     alertTitle: "Conexión exitosa",
@@ -256,19 +364,6 @@ app.post('/auth', async (req, res) => {
     }
 })
 
-//PagoCarrito
-/* app.post('/pagoDeCarrito', async (req, res) => {
-    res.render('carrito', {
-        alert: true,
-        alertTitle: "Pago exitoso",
-        alertMessage: "¡PAGO REALIZADO!",
-        alertIcon: "success",
-        showConfirmButton: false,
-        timer: 1500,
-        ruta: ''
-    })
-}) */
-
 //Auth pages
 app.get('/', (req, res) => {
     if (req.session.loggedin) {
@@ -276,14 +371,14 @@ app.get('/', (req, res) => {
             login: true,
             name: req.session.name,
             listaPromociones: listaPromociones,
-            listaDestacados: listaDestacados
+            listaDestacados: listaDestacados,
         });
     } else {
         res.render('index', {
             login: false,
             name: 'Debe iniciar sesión',
             listaPromociones: listaPromociones,
-            listaDestacados: listaDestacados
+            listaDestacados: listaDestacados,
         })
     }
 })
@@ -291,12 +386,16 @@ app.get('/tienda', (req, res) => {
     if (req.session.loggedin) {
         res.render('tienda', {
             login: true,
-            name: req.session.name
+            name: req.session.name,
+            listaRecomendados: listaRecomendados,
+            listaPorDebajo20k: listaPorDebajo20k
         });
     } else {
         res.render('tienda', {
             login: false,
-            name: 'Debe iniciar sesión'
+            name: 'Debe iniciar sesión',
+            listaRecomendados: listaRecomendados,
+            listaPorDebajo20k: listaPorDebajo20k
         })
     }
 })
@@ -345,7 +444,10 @@ app.get('/carrito', (req, res) => {
             login: true,
             name: req.session.name,
             listaJuegos: listaJuegos,
-            listaJuegosJason: JSON.stringify(listaJuegos)
+/*             listaJuegosJason: JSON.stringify(listaJuegos), */
+            listaCarrito: listaCarrito,
+            listaCarritoActual: listaCarritoActual,
+            totalCarritoActual: totalCarritoActual
         });
     } else {
         res.redirect('/')

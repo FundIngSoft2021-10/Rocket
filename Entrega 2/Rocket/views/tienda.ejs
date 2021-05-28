@@ -103,23 +103,13 @@
                 <p class="tiendaTitulo">Recomendados por la comunidad</p>
                 <section class="ofertas2">
                     <li>
-                        <a>
-                            <h3 class="titulo">Inside</h3>
-                            <img src="img/inside.jpg">
-                            <span class="precio">$ 39.900</span>
-                        </a>
-                        <a>
-                            <h3 class="titulo">FireWatch</h3>
-                            <img src="img/firewatch.jpg">
-                            <span class="precio">$ 6.000 - 15% Dcto</span>
-                        </a>
-                        <a>
-                            <h3 class="titulo">Fall Guys</h3>
-                            <img src="img/images.jpg">
-                            <span class="precio">$ 26.000 - 55% Dcto</span>
-                           
-                        </a>
-                        
+                        <% listaRecomendados.forEach(function(juego) { %>
+                            <a>
+                                <h3 class="titulo"><%= juego.nombre %></h3>
+                                <img src= <%= juego.imagen %> >
+                                <span id="precio" class="precio"> <%= new Intl.NumberFormat('es-CO', { style: "currency", currency: "COP" }).format(juego.precio) %> </span>
+                            </a>
+                        <% }); %>
                     </li>
 
                 </section>

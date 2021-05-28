@@ -64,27 +64,73 @@
     <div class="contenedor-carrito">
         <div class="row">
             <!-- Elementos generados a partir del JSON -->
-            <main id="items" class="col-sm-6 row"></main>
+            <main id="items" class="col-sm-6 row">
+                <% for(let i = 0; i < listaCarritoActual.length; i++){ %>
+                    <form class="juego" action="/eliminar-Juego" method="POST"> 
+                        <div class="card col-sm-5">
+                            <div class="card-body">
+                                <img class="img-fluid" src=<%= listaCarritoActual[i].imagen %> >
+                                <h5 class="card-title"><%= listaCarritoActual[i].nombre %></h5>
+                                <input type="hidden" id="id" name="idJuego" value="<%= listaCarritoActual[i].id %>">
+                                <p class="card-text"><%= new Intl.NumberFormat('es-CO', { style: "currency", currency: "COP" }).format(listaCarritoActual[i].precio) %></p>
+                                <button class="btn btn-primary" type="submit" id="borrarJuego" marcador="1">Eliminar</button>
+                            </div>
+                        </div>    
+                    </form> 
+                <% } %>
+                
+            </main>
             <!-- Carrito -->
             <aside class="col-sm-4">
-                <form action="/pagoDeCarrito" method="POST"></form>
                 <h2>Carrito</h2>
                 <!-- Elementos del carrito -->
                 <ul id="carrito" class="list-group"></ul>
                 <hr>
                 <!-- Precio total -->
-                <p class="text-right">Total: <span id="total">0</span> COP</p>
-                <button id="boton-vaciar" class="boton boton-75">Vaciar</button>
-                <button id="boton-pagar" type="submit" class="boton boton-75">Pagar</button>
+                <p class="text-right">Total: <span id="total"><%= new Intl.NumberFormat('es-CO', { style: "currency", currency: "COP" }).format(totalCarritoActual) %></span> COP</p>
+                <% if(listaCarritoActual.length>0) { %>
+                <form action="/vaciar-Carrito" method="POST">
+                    <button id="boton-vaciar" type="submit" class="boton boton-75">Vaciar</button>
+                </form>
+                <form action="/pago-Carrito" method="POST">
+                    <button id="boton-pagar" type="submit" class="boton boton-75">Pagar</button>
+                </form>
+                <% } %>
             </aside>
         </div>
     </div>
 
 
-    <script>
+    <!-- <script>
         window.onload = function () {
             // Variables
-            var baseDeDatos = <%-listaJuegosJason %>;
+            /* var baseDeDatos = listaJuegosJason ; */
+            const baseDeDatos = [
+                {
+                    id: 1,
+                    nombre: 'Fifa 2021',
+                    precio: 86000,
+                    imagen: 'img/fifa.jpeg'
+                },
+                {
+                    id: 2,
+                    nombre: 'Among Us',
+                    precio: 10000,
+                    imagen: 'img/among.jpeg'
+                },
+                {
+                    id: 3,
+                    nombre: 'Minecraft',
+                    precio: 105000,
+                    imagen: 'img/minecraft.jpg'
+                },
+                {
+                    id: 4,
+                    nombre: 'Inside',
+                    precio: 50000,
+                    imagen: 'img/inside.jpg'
+                }
+            ];
             let carrito = []; //listaCarrito
             let total = 0;
             const DOMitems = document.querySelector('#items');
@@ -212,7 +258,6 @@
                 calcularTotal();
                 // Actualizamos el LocalStorage
                 guardarCarritoEnLocalStorage();
-
             }
 
             /**
@@ -281,9 +326,23 @@
             renderizarCarrito();
         }
 
-    </script>
+    </script> -->
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <% if(typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %> ,
+                timer: <%= timer %>
+            }).then(()=>{
+                window.location='/<%= ruta %>'
+            })
+        </script>
+    <% } %>
+
 
 </body>
 
