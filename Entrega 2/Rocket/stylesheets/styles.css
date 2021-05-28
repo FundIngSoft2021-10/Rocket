@@ -1220,3 +1220,32 @@ footer p{
     border-radius: 5px;
     cursor: pointer;
 }
+
+.todopago{
+    width: 50%;
+    height: 400px;
+    position: relative;
+    left: 410px;
+    top: 150px;
+}
+.contenedopago{
+    position: relative;
+    height: 300px;
+    left: 80px;
+    background: #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+.tarjeta{
+    position: relative;
+    left: -100px;
+}
+.Numtarjeta{
+    position: relative;
+    left: 450px;
+}
+
+.footpago{
+    position: relative;
+    top: 100px;
+}
