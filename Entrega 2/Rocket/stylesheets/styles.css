@@ -1223,22 +1223,97 @@ footer p{
 }
 .contenedopago{
     position: relative;
-    height: 300px;
+    height: 350px;
     left: 80px;
     background: #ccc;
     border-radius: 5px;
-    padding: 5px;
+    
 }
 .tarjeta{
     position: relative;
     left: -100px;
 }
+.cad{
+    position: relative;
+    left: -100px;
+}
+.cvv{
+    position: relative;
+    left: -65px;
+}
 .Numtarjeta{
     position: relative;
-    left: 450px;
+    left: 380px;
+    width: 250px;
 }
-
+.contenedopago #f{
+    position: relative;
+    left: 85px;
+}
+.contenedopago #c{
+    position: relative;
+    left: 340px;
+}
+.contenedopago #l{
+    position: relative;
+    left: 340px;
+}
 .footpago{
     position: relative;
-    top: 100px;
+    top: 180px;
+}
+.mes{
+    position: relative;
+    left: 363px;
+}
+.ao{
+    position: relative;
+    left: 363px;
+}
+.cvv1{
+    position: relative;
+    left: 363px;
+}
+
+.contenedopago button{
+    position: relative;
+    left: 190px;
+    top: 50px;
+}
+.titulopago{
+    width: 100%;
+    height: 50px;
+    background: #757575;
+    border-radius: 5px;
+    
+}
+.titulopago h2{
+    position: relative;
+    right: 300px;
+    top: 10px;
+    
+}
+.titulopago img{
+    width: 90px;
+    height: auto;
+    position: relative;
+    left: 290px;
+    top: -30px;
+    
+}
+.titulopago .valor{
+    width: 200px;
+    height: auto;
+    position: relative;
+    left: 650px;
+    top: 120px;
+    
+}
+.titulopago .pago{
+    width: 200px;
+    height: auto;
+    position: relative;
+    left: 740px;
+    top: 90px;
+    
 }
