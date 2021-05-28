@@ -280,8 +280,82 @@ app.post('/pago-Carrito', async (req, res) => {
 })
 
 //Metodo POST /visualizar-Juego
+app.post('/visualizar-Juego', async (req, res) => {
+    const {idJuego} = req.body;
+    connection.query('SELECT * FROM juegos WHERE id = ?', [idJuego], async (error, results) => {
+        juegoVisualizar = results[0] ;
+        if (req.session.loggedin) {
+            res.render('juego', {
+                login: true,
+                name: req.session.name,
+                juego: juegoVisualizar
+            });
+        } else {
+            res.render('juego', {
+                login: false,
+                name: 'Debe iniciar sesión',
+                juego: juegoVisualizar
+            })
+        }
+    });
+})
 
+//Metodo POST /buscar-Juego
+app.post('/buscar-Juego', async (req, res) => {
+    const {busqueda} = req.body;
+    connection.query('SELECT * FROM juegos WHERE nombre = ?', [busqueda], async (error, results) => {
+        if(results.length == 0){
+            res.render('tienda', {
+                alert: true,
+                alertTitle: "Error",
+                alertMessage: "No se han encontrado coincidencias",
+                alertIcon: "error",
+                showConfirmButton: false,
+                timer: 1500,
+                ruta: 'tienda'
+            })
+        }
+        else{
+            juegoVisualizar = results[0]
+            if (req.session.loggedin) {
+                res.render('juego', {
+                    login: true,
+                    name: req.session.name,
+                    juego: juegoVisualizar
+                });
+            } else {
+                res.render('juego', {
+                    login: false,
+                    name: 'Debe iniciar sesión',
+                    juego: juegoVisualizar
+                })
+            }
+        }
+    });
+})
 
+//Metodo POST /agregar-Juego
+app.post('/agregar-Juego', async (req, res) => {
+    const {idJuego} = req.body;
+    console.log(idJuego)
+    connection.query('INSERT INTO usersxjuegos(id_usuario, id_juego) VALUES (?,?)', [req.session.idActual, idJuego], async (error, results) => {
+        if (error)
+            return console.error(error.message);
+        console.log('Added Row(s):', results.affectedRows);
+    });
+    cargarCarrito(req)
+    res.render('index', {
+        alert: true,
+        alertTitle: "Carrito",
+        alertMessage: "¡Juego Agregado!",
+        alertIcon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+        ruta: '',
+        login: true,
+        name: req.session.name,
+    })
+})
 
 //Registración 
 app.post('/registro', async (req, res) => {
@@ -472,6 +546,20 @@ app.get('/perfil', (req, res) => {
         res.redirect('/')
     }
 })
+app.get('/juego', (req, res) => {
+    if (req.session.loggedin) {
+        res.render('sobreNosotros', {
+            login: true,
+            name: req.session.name
+        });
+    } else {
+        res.render('sobreNosotros', {
+            login: false,
+            name: 'Debe iniciar sesión'
+        })
+    }
+})
+
 //Logout
 app.get('/logout', (req, res) => {
     req.session.destroy(() => {
