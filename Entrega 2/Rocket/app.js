@@ -24,10 +24,12 @@ listaJuegos.push(juego8); */
 //Invocamos a express
 const express = require('express');
 const app = express();
+const path = require('path');
 
 //Seteamos urlencoded para capturar los datos del formulario
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
 
 //Invocamos a dotenv (variables de entorno)
 const dotenv = require('dotenv');
@@ -40,6 +42,7 @@ app.use('/img', express.static('img'));
 app.use('/img', express.static(__dirname + 'img'));
 app.use('/js', express.static(__dirname + '/js'));
 app.use('/videos', express.static(__dirname + '/videos'));
+
 
 //Establecemos el motor de plantillas ejs
 app.set('view engine', 'ejs');
@@ -99,6 +102,76 @@ connection.query('SELECT * FROM juegos WHERE proximamente = 1', async (error, re
         listaProximamente.push(juego);
     }
 }) 
+
+//Metodo POST /send-email con nodemailer
+const nodemailer = require('nodemailer');
+app.post('/send-email', async (req, res) => {
+    const { nombre, apellido, correo, problema, descripcion } = req.body;
+
+    contentHTML = `
+        <h1>Informacion del usuario</h1>
+        <ul>
+            <li>Nombre: ${nombre}</li>
+            <li>Apellido: ${apellido}</li>
+            <li>User Email: ${correo}</li>
+            <li>Problema: ${problema}</li>
+        </ul>
+        <p>${descripcion}</p>
+    `;
+
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'rocketcontacto0@gmail.com',
+            pass: 'wbjhxatblpsrzqxa'
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    });
+
+    let info = await transporter.sendMail({
+        from: '"Rocket Contactanos" <rocketcontacto0@gmail.com>', // sender address,
+        to: 'rocketcontacto0@gmail.com',
+        subject: 'Rocket Formulario Contacto',
+        html: contentHTML
+    })
+
+    console.log('Message enviado: %s', info.messageId);
+    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+
+    if (req.session.loggedin) {
+        res.render('index', {
+            login: true,
+            name: req.session.name,
+            listaPromociones: listaPromociones,
+            listaDestacados: listaDestacados,
+            alert: true,
+            alertTitle: "Envío formulario",
+            alertMessage: "¡Envío con exito!",
+            alertIcon: 'success',
+            showConfirmButton: false,
+            timer: 1500,
+            ruta: ''
+        });
+    } else {
+        res.render('index', {
+            login: false,
+            name: 'Debe iniciar sesión',
+            listaPromociones: listaPromociones,
+            listaDestacados: listaDestacados,
+            alert: true,
+            alertTitle: "Envío formulario",
+            alertMessage: "¡Envío con exito!",
+            alertIcon: 'success',
+            showConfirmButton: false,
+            timer: 1500,
+            ruta: ''
+        })
+    }
+});
 
 
 //Registración 

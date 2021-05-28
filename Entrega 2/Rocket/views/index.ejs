@@ -157,23 +157,23 @@
 </div>
     <section class="contenedor contacto">
         <h2>Contactanos</h2>
-        <form class="formulario">
+        <form class="formulario" action="/send-email" method="POST" >
             <fieldset>
                 <legend>Contactános llenando los campos</legend>
                 <div class="contenedor-campos">
                     <div class="campo">
                         <label>Nombre</label>
-                        <input class="input-text" type="text" placeholder="Tu nombre">
+                        <input class="input-text" type="text" name="nombre" placeholder="Tu nombre">
                     </div>
 
                     <div class="campo">
                         <label>Apellido</label>
-                        <input class="input-text" type="text" placeholder="Tu apellido">
+                        <input class="input-text" type="text" name="apellido" placeholder="Tu apellido">
                     </div>
 
                     <div class="campo">
                         <label>Correo electronico</label>
-                        <input class="input-text" type="text" placeholder="tu@correo.com">
+                        <input class="input-text" type="text" name="correo" placeholder="tu@correo.com">
                     </div>
 
                     <div class="campo">
@@ -182,17 +182,17 @@
                         <!-- Lista de posibles problemas de contacto -->
                         <select class="input-text" name="problema" id="problema">
                             <option class="input-text" value="-">-</option>
-                            <option class="input-text" value="pago">Problema con pago</option>
-                            <option class="input-text" value="donación">Problema con donacion</option>
-                            <option class="input-text" value="bug">Bugs en un juego</option>
-                            <option class="input-text" value="descargar">No puedo descargar mi juego</option>
-                            <option class="input-text" value="otro">Otro</option>
+                            <option class="input-text" value="Pago">Problema con pago</option>
+                            <option class="input-text" value="Donación">Problema con donacion</option>
+                            <option class="input-text" value="Bug">Bugs en un juego</option>
+                            <option class="input-text" value="Descargas">No puedo descargar mi juego</option>
+                            <option class="input-text" value="Otro">Otro</option>
                         </select>
                     </div>
 
                     <div class="campo">
                         <label>Describa su problema</label>
-                        <textarea class="input-text" name="" id="" cols="60" rows="5"></textarea>
+                        <textarea class="input-text" name="descripcion" id="" cols="60" rows="5"></textarea>
                     </div>
 
 
@@ -250,6 +250,21 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/jquery.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <% if(typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %> ,
+                timer: <%= timer %>
+            }).then(()=>{
+                window.location='/<%= ruta %>'
+            })
+        </script>
+    <% } %>
 
 </body>
 
