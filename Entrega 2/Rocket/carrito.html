@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- Información legible por el navegador, idioma etc... -->
     <meta charset="UTF-8">
@@ -15,8 +16,10 @@
     <link rel="preload" href="stylesheets/styles.css" as="style">
     <script src="https://kit.fontawesome.com/18cfddf396.js" crossorigin="anonymous"></script>
     <link href="stylesheets/styles.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -61,7 +64,7 @@
                 <!-- Precio total -->
                 <p class="text-right">Total: <span id="total">0</span> COP</p>
                 <button id="boton-vaciar" class="boton boton-75">Vaciar</button>
-                <button id=(boton-pagar" class="boton boton-75")>Pagar</button>
+                <button id=(boton-pagar" class="boton boton-75" )>Pagar</button>
             </aside>
         </div>
     </div>
@@ -248,11 +251,11 @@
 
             }
 
-            function guardarCarritoEnLocalStorage () {
+            function guardarCarritoEnLocalStorage() {
                 miLocalStorage.setItem('carrito', JSON.stringify(carrito));
             }
 
-            function cargarCarritoDeLocalStorage () {
+            function cargarCarritoDeLocalStorage() {
                 // ¿Existe un carrito previo guardado en LocalStorage?
                 if (miLocalStorage.getItem('carrito') !== null) {
                     // Carga la información
@@ -272,4 +275,5 @@
 
     </script>
 </body>
+
 </html>
